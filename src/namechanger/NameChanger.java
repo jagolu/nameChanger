@@ -1,21 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package namechanger;
 
-/**
- *
- * @author Javi
- */
 public class NameChanger {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    
+    private boolean changeSubDir = false;
+    private boolean changeWithLowBar = false;
+    private boolean changeWithScript = false;
+    private boolean changeWithMayus = false;
+    private boolean changeWithoutMayus = false;
+    private boolean changeDirsName = false;
+    private boolean changeFileName = false;
+    
+    public NameChanger(){}
+    
+    public NameChanger(boolean changeSubDir, boolean changeWithLowBar, boolean changeWithScript,
+            boolean changeWithMayus, boolean changeWithoutMayus, boolean changeDirsName, boolean changeFileName){
+        this.changeSubDir = changeDirsName;
+        this.changeWithLowBar = changeWithLowBar;
+        this.changeWithMayus = changeWithMayus;
+        this.changeWithMayus = changeWithMayus;
+        this.changeWithoutMayus = changeWithoutMayus;
+        this.changeDirsName = changeDirsName;
+        this.changeFileName = changeFileName;
     }
     
 }
