@@ -39,13 +39,12 @@ public class NameChanger {
     public boolean areTheParamsRight(){
         if(!this.changeWithLowBar && !this.changeWithScript && !this.changeWithMayus && 
                 !this.changeWithoutMayus && !this.beginWithMayus && !this.eraseAccentMarks &&
-                !this.deleteLastSpace) return false;
-        else if(!this.changeDirsName && !this.changeFileName) return false;
-        else if(this.changeWithLowBar && this.changeWithScript) return false;
+                !this.deleteLastSpace) return false; //Any option of change name is true
+        else if(!this.changeDirsName && !this.changeFileName) return false; //It won't make any change
+        else if(this.changeWithLowBar && this.changeWithScript) return false; //Cannot change by script & lowBar at the same time
         else if((this.changeWithLowBar || this.changeWithScript) && 
-                (this.changeWithMayus || this.changeWithoutMayus)) return false;
-        else if(!this.changeDirsName && !this.changeFileName) return false;
-        else if(!existsTheDir(this.rootDir)) return false;
+                (this.changeWithMayus || this.changeWithoutMayus)) return false; //Can change spaces & delete them
+        else if(!existsTheDir(this.rootDir)) return false; //The dir doesn't exist
         else return true;
     }
     
@@ -82,10 +81,6 @@ public class NameChanger {
         return files;
     }
     
-    public void prueba(String prueba){
-        System.out.println(this.eraseAccentMarks(prueba));
-    }
-    
     public String getNewName(String name){
         StringBuffer SBName = new StringBuffer ();
         if(this.eraseAccentMarks) name = this.eraseAccentMarks(name);
@@ -110,16 +105,19 @@ public class NameChanger {
                 SBName.append(name.charAt(i+1));
                 i++;
             }
+            else if(this.deleteLastSpace && name.charAt(i)==' ' && 
+                    ((i+1)<name.length() && !Character.isLetter(name.charAt(i+1)))){
+                SBName.append(name.charAt(i+1));
+                i++;
+            }
             else SBName.append(name.charAt(i));
             i++;
-        }
-        
-        
+        }       
         return SBName.toString();
     }
     
     public String eraseAccentMarks(String name){
-        //String allAcents = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøœùúûüýÿā ē ī ō ūę įç";
+        //String allAcents = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøœùúûüýÿāēīōūęįç";
         String cNormalize = Normalizer.normalize(name, Normalizer.Form.NFD);   
         String cleanString = cNormalize.replaceAll("[^\\p{ASCII}]", "");
         return cleanString;
