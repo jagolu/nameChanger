@@ -1,6 +1,7 @@
 package namechanger;
 
 import java.io.File;
+import java.text.Normalizer;
 import java.util.ArrayList;
 
 public class NameChanger {
@@ -19,7 +20,7 @@ public class NameChanger {
     
     public NameChanger(){}
     
-    public NameChanger(boolean changeSubDir, boolean beginWithMayus,boolean changeWithLowBar, boolean changeWithScript,
+    public NameChanger(boolean changeSubDir, boolean beginWithMayus, boolean changeWithLowBar, boolean changeWithScript,
             boolean changeWithMayus, boolean changeWithoutMayus, boolean changeDirsName, boolean changeFileName, 
             boolean eraseAccentMarks, boolean deleteLastSpace, String rootDir){
         this.changeSubDir = changeDirsName;
@@ -57,6 +58,13 @@ public class NameChanger {
         ArrayList<File> files = this.listFilesOfADir(this.rootDir);
         for(int i=0;i<files.size();i++){
             System.out.println(files.get(i).getAbsolutePath());
+            if(files.get(i).isDirectory() && this.changeDirsName){
+                System.out.println(this.getNewName(files.get(i).getName()));
+            }
+            else if(this.changeFileName){
+                System.out.println(this.getNewName(files.get(i).getName()));
+            }
+            
         }
     }
     
@@ -75,140 +83,45 @@ public class NameChanger {
     }
     
     public void prueba(String prueba){
-        System.out.println(this.beginWithMayus(prueba));
-        System.out.println(this.changeWithLowBar(prueba));
-        System.out.println(this.changeWithScript(prueba));
-        System.out.println(this.changeWithMayus(prueba));
-        System.out.println(this.changeWithoutMayus(prueba));
         System.out.println(this.eraseAccentMarks(prueba));
     }
     
-    private String beginWithMayus(String name){
-        String first = Character.toString(Character.toUpperCase(name.charAt(0)));
-        return first + name.substring(1, name.length()-1);
-    }
-    
-    private String changeWithLowBar(String name){
-        return name.replace(' ', '_');
-    }
-    
-    private String changeWithScript(String name){
-        return name.replace(' ', '-');
-    }
-    
-    private String changeWithMayus(String name){
-        StringBuffer SBName = new StringBuffer();
-        boolean lastSpace = false;
-        for(int i=0;i<name.length();i++){
-            if(!lastSpace && name.charAt(i)!=' '){
-                SBName.append(name.charAt(i));
-            }
-            else if(!lastSpace && name.charAt(i)==' '){
-                lastSpace = true;
-            }
-            else if(lastSpace){
+    public String getNewName(String name){
+        StringBuffer SBName = new StringBuffer ();
+        if(this.eraseAccentMarks) name = this.eraseAccentMarks(name);
+        int i=0;
+        while(i<name.length()){
+            if(this.beginWithMayus && i==0){
                 SBName.append(Character.toUpperCase(name.charAt(i)));
-                lastSpace = false;
             }
-        }       
-       return SBName.toString();
+            if(this.changeWithLowBar && name.charAt(i)==' '){
+                SBName.append('_');
+            }
+            else if(this.changeWithScript && name.charAt(i)==' '){
+                SBName.append('-');
+            }
+            else if(this.changeWithMayus && name.charAt(i)==' ' && 
+                    ((i+1)<name.length() && Character.isLetter(name.charAt(i+1)))){
+                SBName.append(Character.toUpperCase(name.charAt(i+1)));
+                i++;
+            }
+            else if(this.changeWithoutMayus && name.charAt(i)==' ' && 
+                    ((i+1)<name.length() && Character.isLetter(name.charAt(i+1)))){
+                SBName.append(name.charAt(i+1));
+                i++;
+            }
+            else SBName.append(name.charAt(i));
+            i++;
+        }
+        
+        
+        return SBName.toString();
     }
     
-    private String changeWithoutMayus(String name){
-        StringBuffer SBName = new StringBuffer();
-        for(int i=0;i<name.length();i++){
-            if(name.charAt(i)!=' ') SBName.append(name.charAt(i));
-        }       
-       return SBName.toString();
-    }
-    
-    private String eraseAccentMarks(String name){
-        StringBuffer SBName = new StringBuffer();
-        for(int i=0;i<name.length();i++){
-            switch(name.charAt(i)){
-                case 'Á': SBName.append('A');
-                          break;
-                case 'À': SBName.append('A');
-                          break;
-                case 'Ä': SBName.append('A');
-                          break;
-                case 'Â': SBName.append('A');
-                          break;
-                case 'á': SBName.append('a');
-                          break;
-                case 'à': SBName.append('a');
-                          break;
-                case 'ä': SBName.append('a');
-                          break;
-                case 'â': SBName.append('a');
-                          break;
-                case 'É': SBName.append('E');
-                          break;
-                case 'È': SBName.append('E');
-                          break;
-                case 'Ë': SBName.append('E');
-                          break;
-                case 'Ê': SBName.append('E');
-                          break;
-                case 'é': SBName.append('e');
-                          break;
-                case 'è': SBName.append('e');
-                          break;
-                case 'ë': SBName.append('e');
-                          break;
-                case 'ê': SBName.append('e');
-                          break;
-                case 'Í': SBName.append('I');
-                          break;
-                case 'Ì': SBName.append('I');
-                          break;
-                case 'Ï': SBName.append('I');
-                          break;
-                case 'Î': SBName.append('I');
-                          break;
-                case 'í': SBName.append('i');
-                          break;
-                case 'ì': SBName.append('i');
-                          break;
-                case 'ï': SBName.append('i');
-                          break;
-                case 'î': SBName.append('i');
-                          break;
-                case 'Ó': SBName.append('O');
-                          break;
-                case 'Ò': SBName.append('O');
-                          break;
-                case 'Ö': SBName.append('O');
-                          break;
-                case 'Ô': SBName.append('O');
-                          break;
-                case 'ó': SBName.append('o');
-                          break;
-                case 'ò': SBName.append('o');
-                          break;
-                case 'ö': SBName.append('o');
-                          break;
-                case 'ô': SBName.append('o');
-                          break;
-                case 'Ú': SBName.append('U');
-                          break;
-                case 'Ù': SBName.append('U');
-                          break;
-                case 'Ü': SBName.append('U');
-                          break;
-                case 'Û': SBName.append('U');
-                          break;
-                case 'ú': SBName.append('u');
-                          break;
-                case 'ù': SBName.append('u');
-                          break;
-                case 'ü': SBName.append('u');
-                          break;
-                case 'û': SBName.append('u');
-                          break;
-                default : SBName.append(name.charAt(i));
-            }
-        }       
-       return SBName.toString();
+    public String eraseAccentMarks(String name){
+        //String allAcents = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøœùúûüýÿā ē ī ō ūę įç";
+        String cNormalize = Normalizer.normalize(name, Normalizer.Form.NFD);   
+        String cleanString = cNormalize.replaceAll("[^\\p{ASCII}]", "");
+        return cleanString;
     }
 }
