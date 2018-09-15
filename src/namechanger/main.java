@@ -11,12 +11,12 @@ package namechanger;
  */
 public class main {
     public static void main(String [] args){
-        NameChanger nc = new NameChanger(true/*subDir*/, true/*beginWithMayus*/, false/*changeWithLowBar*/, 
+        NameChanger nc = new NameChanger(true/*subDir*/, true/*beginWithMayus*/, true/*changeWithLowBar*/, 
                 false/*changeWithScript*/, false/*changeWithMayus*/, false/*changeWithoutMayus*/, 
-                true/*changeDirsName*/, true/*changeFileName*/, false/*eraseAccentMarks*/, true/*deleteLastSpace*/,
-                "C:\\Users\\Javi\\Documents\\nameChanger");
+                true/*changeDirsName*/, true/*changeFileName*/, true/*eraseAccentMarks*/, true/*deleteLastSpace*/,
+                /*"C:\\Users\\Javi\\Documents\\nameChanger"*/"C:\\Users\\Javi\\Desktop\\olala");
 
-        //nc.changeTheNames();
-        System.out.println(nc.getNewName("aÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøœùúûüýÿā ē ī ō ūę įç .com"));
+        nc.changeTheNames();
+        
     }
 }

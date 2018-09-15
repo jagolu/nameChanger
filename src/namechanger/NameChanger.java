@@ -54,28 +54,24 @@ public class NameChanger {
     }
     
     public void changeTheNames(){
-        ArrayList<File> files = this.listFilesOfADir(this.rootDir);
-        for(int i=0;i<files.size();i++){
-            System.out.println(files.get(i).getAbsolutePath());
-            if(files.get(i).isDirectory() && this.changeDirsName){
-                System.out.println(this.getNewName(files.get(i).getName()));
+        if(this.areTheParamsRight()){
+            ArrayList<File> files = this.listFilesOfADir(this.rootDir);
+            for(int i=0;i<files.size();i++){
+                System.out.println(this.getNewName(files.get(i).getName()));          
             }
-            else if(this.changeFileName){
-                System.out.println(this.getNewName(files.get(i).getName()));
-            }
-            
         }
+        else System.out.println("The params are not right");
     }
     
     private ArrayList<File> listFilesOfADir(File dir){
         ArrayList<File> files = new ArrayList<> ();
         for (final File ficheroEntrada : dir.listFiles()) {
             if (ficheroEntrada.isDirectory()) {
-                files.add(ficheroEntrada);
-                files.addAll(listFilesOfADir(ficheroEntrada));
+                if(this.changeDirsName) files.add(ficheroEntrada);
+                if(this.changeSubDir) files.addAll(listFilesOfADir(ficheroEntrada));
             } 
             else {
-                files.add(ficheroEntrada);
+                if(this.changeFileName) files.add(ficheroEntrada);
             }
         }
         return files;
@@ -89,7 +85,7 @@ public class NameChanger {
             if(this.beginWithMayus && i==0){
                 SBName.append(Character.toUpperCase(name.charAt(i)));
             }
-            if(this.changeWithLowBar && name.charAt(i)==' '){
+            else if(this.changeWithLowBar && name.charAt(i)==' '){
                 SBName.append('_');
             }
             else if(this.changeWithScript && name.charAt(i)==' '){
