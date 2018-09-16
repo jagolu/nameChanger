@@ -55,9 +55,15 @@ public class NameChanger {
     
     public void changeTheNames(){
         if(this.areTheParamsRight()){
-            ArrayList<File> files = this.listFilesOfADir(this.rootDir);
+            ArrayList<File> files = new ArrayList<File>();
+            if(this.changeDirsName) files.add(rootDir);
+            files.addAll(this.listFilesOfADir(this.rootDir));
             for(int i=0;i<files.size();i++){
-                System.out.println(this.getNewName(files.get(i).getName()));          
+                System.out.println(this.getNewName(files.get(i).getName()));    
+                File newFile = new File(this.getNewName(files.get(i).getName()));
+                if(!files.get(i).renameTo(newFile)){
+                    System.out.println("No se ha podido cambiar el nombre de "+files.get(i).getName());
+                }
             }
         }
         else System.out.println("The params are not right");
