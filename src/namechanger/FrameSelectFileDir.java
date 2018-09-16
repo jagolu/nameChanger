@@ -86,7 +86,9 @@ public class FrameSelectFileDir extends javax.swing.JDialog {
                 System.out.println("Fail");
             }
             else{
-                NameChanger nc = new NameChanger();
+                options op = new options(f.getAbsolutePath());
+                this.setVisible(false);
+                op.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1MouseClicked
