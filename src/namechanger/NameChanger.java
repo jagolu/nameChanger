@@ -44,7 +44,8 @@ public class NameChanger {
         else if(this.changeWithLowBar && this.changeWithScript) return false; //Cannot change by script & lowBar at the same time
         else if((this.changeWithLowBar || this.changeWithScript) && 
                 (this.changeWithMayus || this.changeWithoutMayus)) return false; //Can change spaces & delete them
-        else if(!existsTheDir(this.rootDir)) return false; //The dir doesn't exist
+        else if(this.rootDir.getParent()==null) return false; //Trying to change the root dir of the OS
+        //else if(!existsTheDir(this.rootDir)) return false; //The dir doesn't exist
         else return true;
     }
     
@@ -55,7 +56,7 @@ public class NameChanger {
     
     public void changeTheNames(){
         if(this.areTheParamsRight()){
-            ArrayList<File> files = new ArrayList<File>();
+            /*ArrayList<File> files = new ArrayList<File>();
             if(this.changeDirsName) files.add(rootDir);
             files.addAll(this.listFilesOfADir(this.rootDir));
             for(int i=0;i<files.size();i++){
@@ -64,12 +65,24 @@ public class NameChanger {
                 if(!files.get(i).renameTo(newFile)){
                     System.out.println("No se ha podido cambiar el nombre de "+files.get(i).getName());
                 }
+            }*/
+            if(this.rootDir.isDirectory()){
+                ArrayList<File> files = new ArrayList<File>();
+                
+            }
+            else if(this.changeFileName){
+                System.out.println("ahdfasdf");
+                String path = this.getRightPathOnWindows(this.rootDir.getParent());
+                String newName = this.getNewName(this.rootDir.getName());
+                System.out.println(path+newName);
+                File newFile = new File(path+newName);
+                /*if(!*/this.rootDir.renameTo(newFile);//) System.out.println("Salio mal");
             }
         }
         else System.out.println("The params are not right");
     }
     
-    private ArrayList<File> listFilesOfADir(File dir){
+    private ArrayList<File> listFilesOfADir(File dir){ //Get just one level down the directory
         ArrayList<File> files = new ArrayList<> ();
         for (final File ficheroEntrada : dir.listFiles()) {
             if (ficheroEntrada.isDirectory()) {
@@ -118,10 +131,24 @@ public class NameChanger {
         return SBName.toString();
     }
     
-    public String eraseAccentMarks(String name){
+    private String eraseAccentMarks(String name){
         //String allAcents = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöøœùúûüýÿāēīōūęįç";
         String cNormalize = Normalizer.normalize(name, Normalizer.Form.NFD);   
         String cleanString = cNormalize.replaceAll("[^\\p{ASCII}]", "");
         return cleanString;
+    }
+    
+    public String getRightPathOnWindows(String path){
+        StringBuffer sb = new StringBuffer();
+        int i=0;
+        while(i<path.length()){
+            if(path.charAt(i)==92){ //The char of "/"
+                sb.append("\\\\");
+            }
+            else sb.append(path.charAt(i));
+            i++;
+        }
+        sb.append("\\\\");
+        return sb.toString();
     }
 }
