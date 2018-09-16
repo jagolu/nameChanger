@@ -45,55 +45,55 @@ public class NameChanger {
         else if((this.changeWithLowBar || this.changeWithScript) && 
                 (this.changeWithMayus || this.changeWithoutMayus)) return false; //Can change spaces & delete them
         else if(this.rootDir.getParent()==null) return false; //Trying to change the root dir of the OS
-        //else if(!existsTheDir(this.rootDir)) return false; //The dir doesn't exist
+        //else if(!this.rootDir.exists()) return false; //The dir doesn't exist
         else return true;
     }
     
-    private boolean existsTheDir(File f){
-        if(f.exists()) return true;
-        else return false;
-    }
-    
-    public void changeTheNames(){
+    public ArrayList<File> changeTheNames(){
         if(this.areTheParamsRight()){
-            /*ArrayList<File> files = new ArrayList<File>();
-            if(this.changeDirsName) files.add(rootDir);
-            files.addAll(this.listFilesOfADir(this.rootDir));
-            for(int i=0;i<files.size();i++){
-                System.out.println(this.getNewName(files.get(i).getName()));    
-                File newFile = new File(this.getNewName(files.get(i).getName()));
-                if(!files.get(i).renameTo(newFile)){
-                    System.out.println("No se ha podido cambiar el nombre de "+files.get(i).getName());
-                }
-            }*/
+            ArrayList<File> badFiles = new ArrayList<File>();
             if(this.rootDir.isDirectory()){
-                ArrayList<File> files = new ArrayList<File>();
+                if(this.changeDirsName){
+                    String path = this.getRightPathOnWindows(this.rootDir.getParent());
+                    String newName = this.getNewName(this.rootDir.getName());
+                    if(!this.rootDir.renameTo(new File (path+newName))) badFiles.add(this.rootDir);
+                }
+                if(this.changeSubDir){
+                    badFiles.addAll(this.renameSubDir(rootDir.getAbsolutePath()));
+                }
                 
             }
             else if(this.changeFileName){
-                System.out.println("ahdfasdf");
                 String path = this.getRightPathOnWindows(this.rootDir.getParent());
                 String newName = this.getNewName(this.rootDir.getName());
-                System.out.println(path+newName);
-                File newFile = new File(path+newName);
-                /*if(!*/this.rootDir.renameTo(newFile);//) System.out.println("Salio mal");
+                if(!this.rootDir.renameTo(new File(path+newName))) System.out.println("Salio mal");
             }
+            return badFiles;
         }
-        else System.out.println("The params are not right");
+        else return null;
     }
     
-    private ArrayList<File> listFilesOfADir(File dir){ //Get just one level down the directory
-        ArrayList<File> files = new ArrayList<> ();
-        for (final File ficheroEntrada : dir.listFiles()) {
-            if (ficheroEntrada.isDirectory()) {
-                if(this.changeDirsName) files.add(ficheroEntrada);
-                if(this.changeSubDir) files.addAll(listFilesOfADir(ficheroEntrada));
+    private ArrayList<File> renameSubDir(String pathDir){ 
+        File dir = new File (pathDir);
+        ArrayList<File> badFiles = new ArrayList<> ();
+        for (final File fich : dir.listFiles()) {
+            if (fich.isDirectory()) {
+                if(this.changeDirsName){
+                    String path = this.getRightPathOnWindows(fich.getParent());
+                    String newName = this.getNewName(fich.getName());
+                    File newFile = new File (path+newName);
+                    if(!fich.renameTo(newFile)) badFiles.add(newFile);
+                }
+                else if(this.changeSubDir) badFiles.addAll(renameSubDir(fich.getAbsolutePath()));
             } 
-            else {
-                if(this.changeFileName) files.add(ficheroEntrada);
+            else if(this.changeFileName){
+                String path = this.getRightPathOnWindows(fich.getParent());
+                String newName = this.getNewName(fich.getName());
+                File newFile = new File (path+newName);
+                if(!fich.renameTo(newFile)) badFiles.add(newFile);
             }
         }
-        return files;
+        return badFiles;
     }
     
     public String getNewName(String name){
@@ -101,27 +101,18 @@ public class NameChanger {
         if(this.eraseAccentMarks) name = this.eraseAccentMarks(name);
         int i=0;
         while(i<name.length()){
-            if(this.beginWithMayus && i==0){
-                SBName.append(Character.toUpperCase(name.charAt(i)));
-            }
-            else if(this.changeWithLowBar && name.charAt(i)==' '){
-                SBName.append('_');
-            }
-            else if(this.changeWithScript && name.charAt(i)==' '){
-                SBName.append('-');
-            }
-            else if(this.changeWithMayus && name.charAt(i)==' ' && 
-                    ((i+1)<name.length() && Character.isLetter(name.charAt(i+1)))){
+            if(this.beginWithMayus && i==0) SBName.append(Character.toUpperCase(name.charAt(i)));
+            else if(this.changeWithLowBar && name.charAt(i)==' ') SBName.append('_'); 
+            else if(this.changeWithScript && name.charAt(i)==' ') SBName.append('-');
+            else if(this.changeWithMayus && name.charAt(i)==' ' && ((i+1)<name.length() && Character.isLetter(name.charAt(i+1)))){
                 SBName.append(Character.toUpperCase(name.charAt(i+1)));
                 i++;
             }
-            else if(this.changeWithoutMayus && name.charAt(i)==' ' && 
-                    ((i+1)<name.length() && Character.isLetter(name.charAt(i+1)))){
+            else if(this.changeWithoutMayus && name.charAt(i)==' ' && ((i+1)<name.length() && Character.isLetter(name.charAt(i+1)))){
                 SBName.append(name.charAt(i+1));
                 i++;
             }
-            else if(this.deleteLastSpace && name.charAt(i)==' ' && 
-                    ((i+1)<name.length() && !Character.isLetter(name.charAt(i+1)))){
+            else if(this.deleteLastSpace && name.charAt(i)==' ' && ((i+1)<name.length() && !Character.isLetter(name.charAt(i+1)))){
                 SBName.append(name.charAt(i+1));
                 i++;
             }
@@ -142,13 +133,12 @@ public class NameChanger {
         StringBuffer sb = new StringBuffer();
         int i=0;
         while(i<path.length()){
-            if(path.charAt(i)==92){ //The char of "/"
-                sb.append("\\\\");
-            }
+            //The char of "/"
+            if(path.charAt(i)==92) sb.append("\\");
             else sb.append(path.charAt(i));
             i++;
         }
-        sb.append("\\\\");
+        sb.append("\\");
         return sb.toString();
     }
 }
