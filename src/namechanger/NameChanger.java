@@ -16,13 +16,14 @@ public class NameChanger {
     private boolean changeFileName = false;
     private boolean eraseAccentMarks = false;
     private boolean deleteLastSpace = false;
+    private boolean changeRootDir = false;
     private File rootDir = null;
     
     public NameChanger(){}
     
     public NameChanger(boolean changeSubDir, boolean beginWithMayus, boolean changeWithLowBar, boolean changeWithScript,
             boolean changeWithMayus, boolean changeWithoutMayus, boolean changeDirsName, boolean changeFileName, 
-            boolean eraseAccentMarks, boolean deleteLastSpace, String rootDir){
+            boolean eraseAccentMarks, boolean deleteLastSpace, boolean changeRootDir,String rootDir){
         this.changeSubDir = changeDirsName;
         this.beginWithMayus = beginWithMayus;
         this.changeWithLowBar = changeWithLowBar;
@@ -33,8 +34,46 @@ public class NameChanger {
         this.changeFileName = changeFileName;
         this.eraseAccentMarks = eraseAccentMarks;
         this.deleteLastSpace = deleteLastSpace;
+        this.changeRootDir = changeRootDir;
         this.rootDir = new File(rootDir);
     }
+    
+    public void setChangeSubDir(boolean csd){ this.changeSubDir=csd; }
+    public boolean getChangeSubDir(){ return this.changeSubDir; }
+    
+    public void setBeginWithMayus(boolean bwm){ this.beginWithMayus=bwm; }
+    public boolean getBeginWithMayus(){ return this.beginWithMayus; }
+    
+    public void setChangeWithLowBar(boolean cwlb){ this.changeWithLowBar=cwlb; }
+    public boolean getChangeWithLowBar(){ return  this.changeWithLowBar; }
+    
+    public void setChangeWithScript(boolean cws){ this.changeWithScript=cws; }
+    public boolean getChangeWithScript(){ return this.changeWithScript; }
+    
+    public void setChangeWithMayus(boolean cwm){ this.changeWithMayus = cwm; }
+    public boolean getChangeWithMayus(){ return this.changeWithMayus; }
+    
+    public void setChangeWithoutMayus(boolean cwm){ this.changeWithoutMayus = cwm; }
+    public boolean getChangeWithoutMayus(){ return this.changeWithoutMayus; }
+    
+    public void setChangeDirsName(boolean cdn){ this.changeDirsName=cdn; }
+    public boolean getChangeDirsName(){ return this.changeDirsName; }
+    
+    public void setChangeFileName(boolean cfn){ this.changeFileName=cfn; }
+    public boolean getChangeFileName(){ return this.changeFileName; }
+    
+    public void setEraseAccentMarks(boolean eam){ this.eraseAccentMarks=eam; }
+    public boolean getEraseAccentMarks(){ return this.eraseAccentMarks; }
+    
+    public void setDeleteLastSpace(boolean dls){ this.deleteLastSpace=dls; }
+    public boolean getDeleteLastSpace(){ return this.deleteLastSpace; }
+    
+    public void setChangeRootDir(boolean crd){ this.changeRootDir=crd; }
+    public boolean getChangeRootDir(){ return this.changeRootDir; }
+    
+    public void setRootDir(File rd){ this.rootDir=rd; }
+    public File getRootDir(){ return this.rootDir; }
+    
     
     public boolean areTheParamsRight(){
         if(!this.changeWithLowBar && !this.changeWithScript && !this.changeWithMayus && 
@@ -45,7 +84,7 @@ public class NameChanger {
         else if((this.changeWithLowBar || this.changeWithScript) && 
                 (this.changeWithMayus || this.changeWithoutMayus)) return false; //Can change spaces & delete them
         else if(this.rootDir.getParent()==null) return false; //Trying to change the root dir of the OS
-        //else if(!this.rootDir.exists()) return false; //The dir doesn't exist
+        else if(!this.changeRootDir && !this.changeDirsName && !this.changeSubDir) return false; //Not subdir and not change mainDir (the only file we can change)
         else return true;
     }
     
@@ -53,15 +92,12 @@ public class NameChanger {
         if(this.areTheParamsRight()){
             ArrayList<File> badFiles = new ArrayList<File>();
             if(this.rootDir.isDirectory()){
-                if(this.changeDirsName){
+                if(this.changeRootDir){
                     String path = this.getRightPathOnWindows(this.rootDir.getParent());
                     String newName = this.getNewName(this.rootDir.getName());
                     if(!this.rootDir.renameTo(new File (path+newName))) badFiles.add(this.rootDir);
                 }
-                if(this.changeSubDir){
-                    badFiles.addAll(this.renameSubDir(rootDir.getAbsolutePath()));
-                }
-                
+                if(this.changeSubDir) badFiles.addAll(this.renameSubDir(rootDir.getAbsolutePath()));
             }
             else if(this.changeFileName){
                 String path = this.getRightPathOnWindows(this.rootDir.getParent());
