@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 public class AdvancedOptions extends javax.swing.JDialog {
     NameChanger nc;
     NameChangerInterface nci;
+    Help helpWindows;
     /**
      * Creates new form AdvancedOptions
      */
@@ -23,7 +24,9 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.setAlwaysOnTop(true);
         this.nc = nc;
         this.nci= nci;
-        System.out.println("start");
+        this.helpWindows = new Help();
+        helpWindows.setResizable(false);
+        this.helpWindows.setVisible(false);
     }
 
     /**
@@ -45,28 +48,86 @@ public class AdvancedOptions extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 102, 51));
+        setForeground(new java.awt.Color(255, 255, 255));
 
         changeSubDir.setSelected(true);
         changeSubDir.setText("Change the subs dirs");
+        changeSubDir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                changeSubDirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                changeSubDirMouseExited(evt);
+            }
+        });
 
         beginWithCapitalLetter.setSelected(true);
         beginWithCapitalLetter.setText("Begin with capital letters");
+        beginWithCapitalLetter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                beginWithCapitalLetterMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                beginWithCapitalLetterMouseExited(evt);
+            }
+        });
 
         changeDirsName.setSelected(true);
         changeDirsName.setText("Change dirs name");
+        changeDirsName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                changeDirsNameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                changeDirsNameMouseExited(evt);
+            }
+        });
 
         changeFilesName.setSelected(true);
         changeFilesName.setText("Change files name");
+        changeFilesName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                changeFilesNameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                changeFilesNameMouseExited(evt);
+            }
+        });
 
+        EraseAccentMarks.setBackground(new java.awt.Color(255, 255, 255));
         EraseAccentMarks.setSelected(true);
         EraseAccentMarks.setText("Erase accent marks");
+        EraseAccentMarks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EraseAccentMarksMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EraseAccentMarksMouseExited(evt);
+            }
+        });
 
         deleteLastSpaces.setSelected(true);
         deleteLastSpaces.setText("Delete the last spaces");
+        deleteLastSpaces.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteLastSpacesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteLastSpacesMouseExited(evt);
+            }
+        });
 
         changeRootDirName.setSelected(true);
         changeRootDirName.setText("Change the root dir name");
+        changeRootDirName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                changeRootDirNameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                changeRootDirNameMouseExited(evt);
+            }
+        });
 
         jButton1.setText("Aceptar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,6 +192,68 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.setVisible(false);
         nci.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void startHelpMessage(int x, int y, int type){
+        this.helpWindows.setVisible(true);
+        this.helpWindows.setLocation(x, y);
+        this.helpWindows.setHelp(type);
+    }
+    
+    private void changeSubDirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeSubDirMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-230,1);
+    }//GEN-LAST:event_changeSubDirMouseEntered
+
+    private void changeSubDirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeSubDirMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_changeSubDirMouseExited
+
+    private void changeFilesNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeFilesNameMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-250, evt.getYOnScreen()-230,2);
+    }//GEN-LAST:event_changeFilesNameMouseEntered
+
+    private void changeFilesNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeFilesNameMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_changeFilesNameMouseExited
+
+    private void beginWithCapitalLetterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_beginWithCapitalLetterMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-251,3);
+    }//GEN-LAST:event_beginWithCapitalLetterMouseEntered
+
+    private void beginWithCapitalLetterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_beginWithCapitalLetterMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_beginWithCapitalLetterMouseExited
+
+    private void EraseAccentMarksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EraseAccentMarksMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-250, evt.getYOnScreen()-251,4);
+    }//GEN-LAST:event_EraseAccentMarksMouseEntered
+
+    private void EraseAccentMarksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EraseAccentMarksMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_EraseAccentMarksMouseExited
+
+    private void changeDirsNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeDirsNameMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-286,5);
+    }//GEN-LAST:event_changeDirsNameMouseEntered
+
+    private void changeDirsNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeDirsNameMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_changeDirsNameMouseExited
+
+    private void deleteLastSpacesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLastSpacesMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-250, evt.getYOnScreen()-286,6);
+    }//GEN-LAST:event_deleteLastSpacesMouseEntered
+
+    private void deleteLastSpacesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLastSpacesMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_deleteLastSpacesMouseExited
+
+    private void changeRootDirNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeRootDirNameMouseEntered
+        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-321,5);
+    }//GEN-LAST:event_changeRootDirNameMouseEntered
+
+    private void changeRootDirNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeRootDirNameMouseExited
+        this.helpWindows.setVisible(false);
+    }//GEN-LAST:event_changeRootDirNameMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

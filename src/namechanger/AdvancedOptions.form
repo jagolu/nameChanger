@@ -4,6 +4,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="33" green="66" red="ff" type="rgb"/>
+    </Property>
+    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
   </Properties>
@@ -21,6 +24,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-56,0,0,1,113"/>
   </AuxValues>
 
   <Layout>
@@ -79,42 +83,73 @@
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Change the subs dirs"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeSubDirMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeSubDirMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="beginWithCapitalLetter">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Begin with capital letters"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beginWithCapitalLetterMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beginWithCapitalLetterMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="changeDirsName">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Change dirs name"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeDirsNameMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeDirsNameMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="changeFilesName">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Change files name"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeFilesNameMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeFilesNameMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="EraseAccentMarks">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Erase accent marks"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EraseAccentMarksMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EraseAccentMarksMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="deleteLastSpaces">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Delete the last spaces"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteLastSpacesMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteLastSpacesMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="changeRootDirName">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Change the root dir name"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeRootDirNameMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="changeRootDirNameMouseExited"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>

@@ -45,16 +45,18 @@ public class NameChangerInterface extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        spaces = new javax.swing.JComboBox<>();
-        select = new javax.swing.JButton();
         theFile = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        spaces = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        select = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        theFile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jButton1.setText("advancedOptions");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,10 +65,10 @@ public class NameChangerInterface extends javax.swing.JDialog {
             }
         });
 
+        spaces.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not to change spaces", "Change spaces by low bar", "Change spaces by script", "Delete space", "Delete space (Next letter on capital)" }));
+
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("            NameChanger");
-
-        spaces.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Not to change spaces", "Change spaces by low bar", "Change spaces by script", "Delete space", "Delete space (Next letter on capital)" }));
 
         select.setText("Select file or dir");
         select.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,8 +76,6 @@ public class NameChangerInterface extends javax.swing.JDialog {
                 selectMouseClicked(evt);
             }
         });
-
-        theFile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jButton2.setText("jButton2");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,60 +88,67 @@ public class NameChangerInterface extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 124, Short.MAX_VALUE)
-                .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(spaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(theFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(theFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(spaces, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 39, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(55, 55, 55)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(spaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(theFile, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(select)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(theFile, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(select)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        if(advancedOptionsPage==null){
-            advancedOptionsPage = new AdvancedOptions(nc, this);
-            advancedOptionsPage.addWindowListener(new java.awt.event.WindowAdapter() {
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        if(this.myMessage==null){
+            this.myMessage = new Message(nc, this);
+            this.myMessage.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     System.exit(0);
                 }
             });
-            advancedOptionsPage.setLocationRelativeTo(null); 
-            advancedOptionsPage.setResizable(false);
+            this.myMessage.setLocationRelativeTo(null);
+            this.myMessage.setResizable(false);
         }
-        advancedOptionsPage.setVisible(true);
-        advancedOptionsPage.setAlwaysOnTop(true);
+        this.myMessage.setVisible(true);
+        this.myMessage.setAlwaysOnTop(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jButton2MouseClicked
 
     private void selectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectMouseClicked
         // TODO add your handling code here:
@@ -153,7 +160,7 @@ public class NameChangerInterface extends javax.swing.JDialog {
         if ((file == null) || (file.getName().equals("")) || !file.exists()) {
             this.theFile.setForeground(Color.red);
             this.theFile.setText("No se ha seleccionado ningun archivo o directorio valido");
-        } 
+        }
         else{
             nc.setRootDir(file);
             int index = spaces.getSelectedIndex();
@@ -178,23 +185,22 @@ public class NameChangerInterface extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_selectMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        if(this.myMessage==null){
-            this.myMessage = new Message(nc, this);
-            this.myMessage.addWindowListener(new java.awt.event.WindowAdapter() {
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        if(advancedOptionsPage==null){
+            advancedOptionsPage = new AdvancedOptions(nc, this);
+            advancedOptionsPage.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     System.exit(0);
                 }
             });
-            this.myMessage.setLocationRelativeTo(null); 
-            this.myMessage.setResizable(false);
+            advancedOptionsPage.setLocationRelativeTo(null);
+            advancedOptionsPage.setResizable(false);
         }
-        this.myMessage.setVisible(true);
-        this.myMessage.setAlwaysOnTop(true);
+        advancedOptionsPage.setVisible(true);
+        advancedOptionsPage.setAlwaysOnTop(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_jButton1MouseClicked
 
     public void restart(){
         nc = null;
