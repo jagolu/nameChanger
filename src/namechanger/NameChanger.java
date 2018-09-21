@@ -75,14 +75,15 @@ public class NameChanger {
     public File getRootDir(){ return this.rootDir; }
     
     
-    public boolean areTheParamsRight(){
+    private boolean areTheParamsRight(){
         if(!this.changeWithLowBar && !this.changeWithScript && !this.changeWithMayus && 
                 !this.changeWithoutMayus && !this.beginWithMayus && !this.eraseAccentMarks &&
-                !this.deleteLastSpace) return false; //Any option of change name is true
-        else if(!this.changeDirsName && !this.changeFileName) return false; //It won't make any change
-        else if(this.changeWithLowBar && this.changeWithScript) return false; //Cannot change by script & lowBar at the same time
+                !this.deleteLastSpace) return false;//Any option of change name is true}
+        else if(!this.changeDirsName && !this.changeFileName) return false;//It won't make any change
+        else if(this.changeWithLowBar && this.changeWithScript) return false;//Cannot change by script & lowBar at the same time
         else if((this.changeWithLowBar || this.changeWithScript) && 
                 (this.changeWithMayus || this.changeWithoutMayus)) return false; //Can change spaces & delete them
+        else if(this.rootDir==null) return false; //The dir doesnt exist
         else if(this.rootDir.getParent()==null) return false; //Trying to change the root dir of the OS
         else if(!this.changeRootDir && !this.changeDirsName && !this.changeSubDir) return false; //Not subdir and not change mainDir (the only file we can change)
         else return true;
@@ -102,7 +103,7 @@ public class NameChanger {
             else if(this.changeFileName){
                 String path = this.getRightPathOnWindows(this.rootDir.getParent());
                 String newName = this.getNewName(this.rootDir.getName());
-                if(!this.rootDir.renameTo(new File(path+newName))) System.out.println("Salio mal");
+                if(!this.rootDir.renameTo(new File(path+newName))) badFiles.add(this.rootDir);
             }
             return badFiles;
         }
@@ -132,7 +133,7 @@ public class NameChanger {
         return badFiles;
     }
     
-    public String getNewName(String name){
+    private String getNewName(String name){
         StringBuffer SBName = new StringBuffer ();
         if(this.eraseAccentMarks) name = this.eraseAccentMarks(name);
         int i=0;
@@ -165,7 +166,7 @@ public class NameChanger {
         return cleanString;
     }
     
-    public String getRightPathOnWindows(String path){
+    private String getRightPathOnWindows(String path){
         StringBuffer sb = new StringBuffer();
         int i=0;
         while(i<path.length()){

@@ -23,6 +23,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.setAlwaysOnTop(true);
         this.nc = nc;
         this.nci= nci;
+        System.out.println("start");
     }
 
     /**
@@ -119,8 +120,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        this.setVisible(false);
-        nci.setVisible(true);
+
         this.nc.setEraseAccentMarks(this.EraseAccentMarks.isSelected());
         this.nc.setBeginWithMayus(this.beginWithCapitalLetter.isSelected());
         this.nc.setChangeDirsName(this.changeDirsName.isSelected());
@@ -128,6 +128,8 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.nc.setChangeRootDir(this.changeRootDirName.isSelected());
         this.nc.setChangeSubDir(this.changeSubDir.isSelected());
         this.nc.setDeleteLastSpace(this.deleteLastSpaces.isSelected());
+        this.setVisible(false);
+        nci.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
 
