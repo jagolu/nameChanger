@@ -47,7 +47,7 @@ public class Help extends javax.swing.JDialog {
                 message+="This changes the root dir name.";
                 break;
         }
-        this.jTextArea1.setText(message);
+        this.message.setText(message);
     }
     
     /**
@@ -60,19 +60,24 @@ public class Help extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        message = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Help");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        message.setEditable(false);
+        message.setColumns(20);
+        message.setRows(5);
+        message.setAutoscrolls(false);
+        message.setDoubleBuffered(true);
+        message.setDragEnabled(true);
+        message.setFocusable(false);
+        message.setOpaque(false);
+        message.setVerifyInputWhenFocusTarget(false);
+        jScrollPane1.setViewportView(message);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,6 +95,6 @@ public class Help extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea message;
     // End of variables declaration//GEN-END:variables
 }

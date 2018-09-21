@@ -5,6 +5,7 @@
  */
 package namechanger;
 
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,6 +28,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.helpWindows = new Help();
         helpWindows.setResizable(false);
         this.helpWindows.setVisible(false);
+        this.getContentPane().setBackground( Color.white );
     }
 
     /**
@@ -48,6 +50,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Advanced options");
         setBackground(new java.awt.Color(255, 102, 51));
         setForeground(new java.awt.Color(255, 255, 255));
 
@@ -199,8 +202,17 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.helpWindows.setHelp(type);
     }
     
+    private int getHelpWindowsX(){
+        return this.getX()+86;
+    }
+    
+    private int getHelpWindowsY(){
+        return this.getY()-140;
+    }
+    
     private void changeSubDirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeSubDirMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-230,1);
+        //this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-230,1);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(), 1);
     }//GEN-LAST:event_changeSubDirMouseEntered
 
     private void changeSubDirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeSubDirMouseExited
@@ -208,7 +220,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }//GEN-LAST:event_changeSubDirMouseExited
 
     private void changeFilesNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeFilesNameMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-250, evt.getYOnScreen()-230,2);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(),2);
     }//GEN-LAST:event_changeFilesNameMouseEntered
 
     private void changeFilesNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeFilesNameMouseExited
@@ -216,7 +228,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }//GEN-LAST:event_changeFilesNameMouseExited
 
     private void beginWithCapitalLetterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_beginWithCapitalLetterMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-251,3);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(),3);
     }//GEN-LAST:event_beginWithCapitalLetterMouseEntered
 
     private void beginWithCapitalLetterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_beginWithCapitalLetterMouseExited
@@ -224,7 +236,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }//GEN-LAST:event_beginWithCapitalLetterMouseExited
 
     private void EraseAccentMarksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EraseAccentMarksMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-250, evt.getYOnScreen()-251,4);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(),4);
     }//GEN-LAST:event_EraseAccentMarksMouseEntered
 
     private void EraseAccentMarksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EraseAccentMarksMouseExited
@@ -232,7 +244,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }//GEN-LAST:event_EraseAccentMarksMouseExited
 
     private void changeDirsNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeDirsNameMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-286,5);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(),5);
     }//GEN-LAST:event_changeDirsNameMouseEntered
 
     private void changeDirsNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeDirsNameMouseExited
@@ -240,7 +252,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }//GEN-LAST:event_changeDirsNameMouseExited
 
     private void deleteLastSpacesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLastSpacesMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-250, evt.getYOnScreen()-286,6);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(),6);
     }//GEN-LAST:event_deleteLastSpacesMouseEntered
 
     private void deleteLastSpacesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteLastSpacesMouseExited
@@ -248,7 +260,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
     }//GEN-LAST:event_deleteLastSpacesMouseExited
 
     private void changeRootDirNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeRootDirNameMouseEntered
-        this.startHelpMessage(evt.getXOnScreen()-100, evt.getYOnScreen()-321,5);
+        this.startHelpMessage(this.getHelpWindowsX(), this.getHelpWindowsY(),5);
     }//GEN-LAST:event_changeRootDirNameMouseEntered
 
     private void changeRootDirNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeRootDirNameMouseExited
