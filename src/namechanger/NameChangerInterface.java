@@ -6,9 +6,11 @@
 package namechanger;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -25,7 +27,7 @@ public class NameChangerInterface extends javax.swing.JDialog {
         super(parent, modal);
         nc = new NameChanger();
         initComponents();
-        this.jButton2.setVisible(false);
+        this.startButton.setVisible(false);
         this.nc.setEraseAccentMarks(true);
         this.nc.setBeginWithMayus(true);
         this.nc.setChangeDirsName(true);
@@ -49,11 +51,11 @@ public class NameChangerInterface extends javax.swing.JDialog {
 
         jLabel2 = new javax.swing.JLabel();
         theFile = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        advancedOptionsButton = new javax.swing.JButton();
         spaces = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        select = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        nameChangerName = new javax.swing.JLabel();
+        selectDirFileButton = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -62,11 +64,11 @@ public class NameChangerInterface extends javax.swing.JDialog {
         theFile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         theFile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setText("advancedOptions");
-        jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        advancedOptionsButton.setText("advancedOptions");
+        advancedOptionsButton.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        advancedOptionsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                advancedOptionsButtonMouseClicked(evt);
             }
         });
 
@@ -80,30 +82,30 @@ public class NameChangerInterface extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("NameChanger");
+        nameChangerName.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        nameChangerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameChangerName.setText("NameChanger");
 
-        select.setText("Select file or dir");
-        select.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        select.addMouseListener(new java.awt.event.MouseAdapter() {
+        selectDirFileButton.setText("Select file or dir");
+        selectDirFileButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        selectDirFileButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                selectMouseClicked(evt);
+                selectDirFileButtonMouseClicked(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(204, 255, 204));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jButton2.setText("Start!");
-        jButton2.setActionCommand("Start");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        startButton.setBackground(new java.awt.Color(204, 255, 204));
+        startButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        startButton.setText("Start!");
+        startButton.setActionCommand("Start");
+        startButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                startButtonMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                startButtonActionPerformed(evt);
             }
         });
 
@@ -115,44 +117,44 @@ public class NameChangerInterface extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nameChangerName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(theFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(advancedOptionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(spaces, 0, 220, Short.MAX_VALUE)))
                         .addGap(10, 10, 10))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
-                .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectDirFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameChangerName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(advancedOptionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spaces, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addComponent(theFile, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(select)
+                .addComponent(selectDirFileButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
         // TODO add your handling code here:
         if(this.myMessage==null){
             this.myMessage = new Message(nc, this);
@@ -168,11 +170,14 @@ public class NameChangerInterface extends javax.swing.JDialog {
         this.myMessage.setVisible(true);
         this.myMessage.setAlwaysOnTop(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_startButtonMouseClicked
 
-    private void selectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectMouseClicked
-        // TODO add your handling code here:
-        JFileChooser selecter = new JFileChooser();
+    private void selectDirFileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectDirFileButtonMouseClicked
+        FileSystemView vSystema = FileSystemView.getFileSystemView(); 
+        File home = vSystema.getHomeDirectory(); 
+        
+        JFileChooser selecter = new JFileChooser(home);
+        selecter.setPreferredSize(new Dimension(700, 700));
         selecter.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
         selecter.showOpenDialog(this);
@@ -180,7 +185,7 @@ public class NameChangerInterface extends javax.swing.JDialog {
         if ((file == null) || (file.getName().equals("")) || !file.exists()) {
             this.theFile.setForeground(Color.red);
             this.theFile.setText("No se ha seleccionado ningun archivo o directorio valido");
-            this.jButton2.setVisible(false);
+            this.startButton.setVisible(false);
             this.setSize(400, 260);
         }
         else{
@@ -203,13 +208,13 @@ public class NameChangerInterface extends javax.swing.JDialog {
             else if(file.isFile()) whatIs ="File: ";
             this.theFile.setForeground(Color.BLACK);
             this.theFile.setText(whatIs+file.getAbsolutePath());
-            this.jButton2.setVisible(true);
+            this.startButton.setVisible(true);
             this.setSize(400, 300);
         }
         this.theFile.setVisible(true);
-    }//GEN-LAST:event_selectMouseClicked
+    }//GEN-LAST:event_selectDirFileButtonMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void advancedOptionsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_advancedOptionsButtonMouseClicked
         if(advancedOptionsPage==null){
             advancedOptionsPage = new AdvancedOptions(nc, this);
             advancedOptionsPage.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -224,25 +229,35 @@ public class NameChangerInterface extends javax.swing.JDialog {
         advancedOptionsPage.setVisible(true);
         advancedOptionsPage.setAlwaysOnTop(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_advancedOptionsButtonMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_startButtonActionPerformed
 
     private void spacesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spacesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_spacesActionPerformed
 
     public void restart(){
-        nc = null;
+        nc = new NameChanger();
         advancedOptionsPage = null;
         myMessage.setVisible(false);
         myMessage = null;
         spaces.setSelectedIndex(0);
         theFile.setText("");
+        theFile.setVisible(false);
+        startButton.setVisible(false);
         this.setVisible(false);
         this.setVisible(false);
+        this.setSize(400, 227);
+        this.nc.setEraseAccentMarks(true);
+        this.nc.setBeginWithMayus(true);
+        this.nc.setChangeDirsName(true);
+        this.nc.setChangeFileName(true);
+        this.nc.setChangeRootDir(true);
+        this.nc.setChangeSubDir(true);
+        this.nc.setDeleteLastSpace(true);
     }
     
     /**
@@ -290,12 +305,12 @@ public class NameChangerInterface extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton advancedOptionsButton;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton select;
+    private javax.swing.JLabel nameChangerName;
+    private javax.swing.JButton selectDirFileButton;
     private javax.swing.JComboBox<String> spaces;
+    private javax.swing.JButton startButton;
     private javax.swing.JLabel theFile;
     // End of variables declaration//GEN-END:variables
 }

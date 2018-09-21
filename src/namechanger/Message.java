@@ -5,6 +5,7 @@
  */
 package namechanger;
 
+import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -18,14 +19,20 @@ public class Message extends javax.swing.JDialog {
 
     public Message(NameChanger nc, NameChangerInterface nci) {
         initComponents();
+        this.getContentPane().setBackground( Color.white );
         this.nci = nci;
+        this.jButton1.setVisible(false);
         this.jTextPane1.setText("Loading...");
         ArrayList<File> badFiles = nc.changeTheNames();
         if(badFiles==null){
             this.jTextPane1.setText("Fail!\nThe params are not right");
+            this.jButton1.setVisible(true);
+            this.jButton1.setBackground(Color.red);
         }
         else if(badFiles.isEmpty()){
             this.jTextPane1.setText("Done!");
+            this.jButton1.setVisible(true);
+            this.jButton1.setBackground(new java.awt.Color(204, 255, 204));
         }
         else{
             String text = "There is an error in the next files: \n";
@@ -33,6 +40,8 @@ public class Message extends javax.swing.JDialog {
             for(int i=1;i<badFiles.size();i++){
                 text=text+"\n"+badFiles.get(i).getAbsolutePath();
             }
+            this.jButton1.setVisible(true);
+            this.jButton1.setBackground(Color.red);
         }
     }
 
@@ -90,10 +99,9 @@ public class Message extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+        nci.restart();
         this.setVisible(false);
         nci.setVisible(true);
-        nci.restart();
     }//GEN-LAST:event_jButton1MouseClicked
  
 

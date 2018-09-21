@@ -3,6 +3,7 @@ package namechanger;
 import java.io.File;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import org.apache.commons.io.FilenameUtils;
 
 public class NameChanger {
     
@@ -94,16 +95,16 @@ public class NameChanger {
             ArrayList<File> badFiles = new ArrayList<File>();
             if(this.rootDir.isDirectory()){
                 if(this.changeRootDir){
-                    String path = this.getRightPathOnWindows(this.rootDir.getParent());
-                    String newName = this.getNewName(this.rootDir.getName());
-                    if(!this.rootDir.renameTo(new File (path+newName))) badFiles.add(this.rootDir);
+                    File newRootDir = new File(getNewAbsolutePath(this.rootDir));
+                    System.out.println(newRootDir.getAbsolutePath());
+                    if(!this.rootDir.renameTo(newRootDir)) badFiles.add(this.rootDir);
+                    else if(this.changeSubDir) badFiles.addAll(this.renameSubDir(newRootDir.getAbsolutePath()));
                 }
-                if(this.changeSubDir) badFiles.addAll(this.renameSubDir(rootDir.getAbsolutePath()));
+                else if(this.changeSubDir && !this.changeRootDir) badFiles.addAll(this.renameSubDir(rootDir.getAbsolutePath()));
             }
             else if(this.changeFileName){
-                String path = this.getRightPathOnWindows(this.rootDir.getParent());
-                String newName = this.getNewName(this.rootDir.getName());
-                if(!this.rootDir.renameTo(new File(path+newName))) badFiles.add(this.rootDir);
+                File newFile = new File(getNewAbsolutePath(this.rootDir));
+                if(!this.rootDir.renameTo(newFile)) badFiles.add(this.rootDir);
             }
             return badFiles;
         }
@@ -116,21 +117,28 @@ public class NameChanger {
         for (final File fich : dir.listFiles()) {
             if (fich.isDirectory()) {
                 if(this.changeDirsName){
-                    String path = this.getRightPathOnWindows(fich.getParent());
-                    String newName = this.getNewName(fich.getName());
-                    File newFile = new File (path+newName);
+                    File newFile = new File(getNewAbsolutePath(fich));
                     if(!fich.renameTo(newFile)) badFiles.add(newFile);
+                    else if(this.changeSubDir) badFiles.addAll(this.renameSubDir(newFile.getAbsolutePath()));
                 }
-                else if(this.changeSubDir) badFiles.addAll(renameSubDir(fich.getAbsolutePath()));
+                else if(this.changeSubDir && !this.changeDirsName) badFiles.addAll(renameSubDir(fich.getAbsolutePath()));
             } 
             else if(this.changeFileName){
-                String path = this.getRightPathOnWindows(fich.getParent());
-                String newName = this.getNewName(fich.getName());
-                File newFile = new File (path+newName);
+                File newFile = new File(getNewAbsolutePath(fich));
                 if(!fich.renameTo(newFile)) badFiles.add(newFile);
             }
         }
         return badFiles;
+    }
+    
+    private String getNewAbsolutePath(File oldAbsolutePath){
+        String path = this.getRightPathOnWindows(oldAbsolutePath.getParent());
+        String newName = this.getNewName(oldAbsolutePath.getName());
+        String newAbsolutePath = path+newName;
+        if(oldAbsolutePath.isFile() && this.deleteLastSpace){
+            newAbsolutePath=this.deleteLastSpaces(newAbsolutePath);
+        }
+        return newAbsolutePath;
     }
     
     private String getNewName(String name){
@@ -149,13 +157,9 @@ public class NameChanger {
                 SBName.append(name.charAt(i+1));
                 i++;
             }
-            else if(this.deleteLastSpace && name.charAt(i)==' ' && ((i+1)<name.length() && !Character.isLetter(name.charAt(i+1)))){
-                SBName.append(name.charAt(i+1));
-                i++;
-            }
             else SBName.append(name.charAt(i));
             i++;
-        }       
+        }    
         return SBName.toString();
     }
     
@@ -164,6 +168,19 @@ public class NameChanger {
         String cNormalize = Normalizer.normalize(name, Normalizer.Form.NFD);   
         String cleanString = cNormalize.replaceAll("[^\\p{ASCII}]", "");
         return cleanString;
+    }
+    
+    private String deleteLastSpaces(String sb){
+        StringBuffer withoutLastSpace = new StringBuffer(sb);
+        String extension = FilenameUtils.getExtension(sb);
+        int index = sb.length() - extension.length() -2;
+        for(int i = index;i>=0;i--){
+            if(sb.charAt(i)==' ' || sb.charAt(i)=='_' || sb.charAt(i)=='-'){
+                withoutLastSpace.deleteCharAt(i);
+            }
+            else break;
+        }
+        return withoutLastSpace.toString();
     }
     
     private String getRightPathOnWindows(String path){
