@@ -21,20 +21,20 @@ public class Message extends javax.swing.JDialog {
         initComponents();
         this.getContentPane().setBackground( Color.white );
         this.nci = nci;
-        this.jButton1.setVisible(false);
-        this.jTextPane1.setText("Loading...");
+        this.acceptButton.setVisible(false);
+        this.messageText.setText("Loading...");
         ArrayList<String> badFiles = nc.changeTheNames();
         if(badFiles==null){
-            this.jTextPane1.setText("Fail!\nThe params are not right");
-            this.jButton1.setVisible(true);
-            this.jButton1.setBackground(Color.red);
-            this.jTextPane1.setForeground(Color.red);
+            this.messageText.setText("Fail!\nThe params are not right");
+            this.acceptButton.setVisible(true);
+            this.acceptButton.setBackground(Color.red);
+            this.messageText.setForeground(Color.red);
         }
         else if(badFiles.isEmpty()){
-            this.jTextPane1.setFont(new Font("Arial", 15, 52));
-            this.jTextPane1.setText("Done!");
-            this.jButton1.setVisible(true);
-            this.jButton1.setBackground(new java.awt.Color(204, 255, 204));
+            this.messageText.setFont(new Font("Arial", 15, 52));
+            this.messageText.setText("Done!");
+            this.acceptButton.setVisible(true);
+            this.acceptButton.setBackground(new java.awt.Color(204, 255, 204));
         }
         else{
             String text = "<html>There is an error in the next files: </br>";
@@ -49,10 +49,10 @@ public class Message extends javax.swing.JDialog {
             }
             text+="</html>";
             this.setSize((int)Math.ceil(243+((max-38)*6.5)), 81+((badFiles.size()-1)*28));
-            this.jTextPane1.setText(text);
-            this.jButton1.setVisible(true);
-            this.jButton1.setBackground(Color.red);
-            this.jTextPane1.setForeground(Color.red);
+            this.messageText.setText(text);
+            this.acceptButton.setVisible(true);
+            this.acceptButton.setBackground(Color.red);
+            this.messageText.setForeground(Color.red);
         }
     }
 
@@ -65,24 +65,24 @@ public class Message extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jTextPane1 = new javax.swing.JLabel();
+        acceptButton = new javax.swing.JButton();
+        messageText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("Aceptar");
-        jButton1.setActionCommand("ok");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        acceptButton.setText("Aceptar");
+        acceptButton.setActionCommand("ok");
+        acceptButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                acceptButtonMouseClicked(evt);
             }
         });
 
-        jTextPane1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jTextPane1.setMaximumSize(new java.awt.Dimension(2, 2));
-        jTextPane1.setMinimumSize(new java.awt.Dimension(2, 2));
-        jTextPane1.setName(""); // NOI18N
-        jTextPane1.setPreferredSize(new java.awt.Dimension(2, 2));
+        messageText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        messageText.setMaximumSize(new java.awt.Dimension(2, 2));
+        messageText.setMinimumSize(new java.awt.Dimension(2, 2));
+        messageText.setName(""); // NOI18N
+        messageText.setPreferredSize(new java.awt.Dimension(2, 2));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,32 +91,32 @@ public class Message extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                    .addComponent(jTextPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(acceptButton, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(messageText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(messageText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(acceptButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void acceptButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptButtonMouseClicked
         nci.restart();
         this.setVisible(false);
         nci.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_acceptButtonMouseClicked
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jTextPane1;
+    private javax.swing.JButton acceptButton;
+    private javax.swing.JLabel messageText;
     // End of variables declaration//GEN-END:variables
 }

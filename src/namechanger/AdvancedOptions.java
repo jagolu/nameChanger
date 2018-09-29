@@ -47,7 +47,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
         EraseAccentMarks = new javax.swing.JCheckBox();
         deleteLastSpaces = new javax.swing.JCheckBox();
         changeRootDirName = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        acceptButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Advanced options");
@@ -132,10 +132,10 @@ public class AdvancedOptions extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Aceptar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        acceptButton.setText("Aceptar");
+        acceptButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                acceptButtonMouseClicked(evt);
             }
         });
 
@@ -155,7 +155,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
                     .addComponent(changeFilesName)
                     .addComponent(EraseAccentMarks)
                     .addComponent(deleteLastSpaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(acceptButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -176,14 +176,14 @@ public class AdvancedOptions extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(changeRootDirName)
-                    .addComponent(jButton1))
+                    .addComponent(acceptButton))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void acceptButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptButtonMouseClicked
 
         this.nc.setEraseAccentMarks(this.EraseAccentMarks.isSelected());
         this.nc.setBeginWithMayus(this.beginWithCapitalLetter.isSelected());
@@ -194,7 +194,7 @@ public class AdvancedOptions extends javax.swing.JDialog {
         this.nc.setDeleteLastSpace(this.deleteLastSpaces.isSelected());
         this.setVisible(false);
         nci.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_acceptButtonMouseClicked
 
     private void startHelpMessage(int x, int y, int type){
         this.helpWindows.setVisible(true);
@@ -270,12 +270,12 @@ public class AdvancedOptions extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox EraseAccentMarks;
+    private javax.swing.JButton acceptButton;
     private javax.swing.JCheckBox beginWithCapitalLetter;
     private javax.swing.JCheckBox changeDirsName;
     private javax.swing.JCheckBox changeFilesName;
     private javax.swing.JCheckBox changeRootDirName;
     private javax.swing.JCheckBox changeSubDir;
     private javax.swing.JCheckBox deleteLastSpaces;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
