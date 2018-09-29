@@ -5,10 +5,10 @@ NameChanger, as its name suggests, changes the name of the directories and files
 
 
 Read more about NameChanger: 
-  - [Features](##features)
-  - [Requirements](##fequirements)
-  - [Installation](##installation)
-  - [Download](##download)
+  - [Features](##Features)
+  - [Requirements](##Fequirements)
+  - [Installation](##Installation)
+  - [Download](##Download)
 
 
 
@@ -28,6 +28,7 @@ With NameChanger, you can change the name of files and directories (and the file
   - "<strong>Delete last spaces</strong>": If this is activated, will delete the last spaces of the files. 
   Example: <I>Example (2) .txt -> Example(2).txt</I>
   - "<strong>Change the root dir name</strong>": If this is activated and you have chosen a directory, will change the name of the dir you have chosen.
+  
   
   
 Now, the big thing of NameChanger with what thing you can replace the spaces. There are 5 options, you only can choose one of them:
