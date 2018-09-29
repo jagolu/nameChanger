@@ -73,7 +73,7 @@ NameChanger doesn't need any installation, it's an exe file!
 ### Version 1.0
 
 ##### Windows
-<a href="https://mega.nz/#!9ZcRyCAB!ZLwuFWEL0N0RqwjG28N3rBaUnZ4Ta4KxtzicSX5f_RE">NameChanger.exe</a>
+<a href="https://mega.nz/#!0RV2nAwL!jxsl5DGKWmFNf8oSLOQFnjNj1UIdoSAUsnJ5XzxvxEc">NameChanger.exe</a>
 ##### Linux
 Developing ...
 
