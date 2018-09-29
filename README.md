@@ -6,7 +6,7 @@ NameChanger, as its name suggests, changes the name of the directories and files
 
 Read more about NameChanger: 
   - [Features](#features)
-  - [Requirements](#fequirements)
+  - [Requirements](#requirements)
   - [Installation](#installation)
   - [Download](#download)
 
