@@ -6,9 +6,7 @@
 package namechanger;
 
 import java.awt.Color;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -40,6 +38,7 @@ public class Message extends javax.swing.JDialog {
             for(int i=1;i<badFiles.size();i++){
                 text=text+"\n"+badFiles.get(i);
             }
+            this.jTextPane1.setText(text);
             this.jButton1.setVisible(true);
             this.jButton1.setBackground(Color.red);
         }

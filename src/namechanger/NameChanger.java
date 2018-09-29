@@ -96,7 +96,6 @@ public class NameChanger {
             if(this.rootDir.isDirectory()){
                 if(this.changeRootDir){
                     File newRootDir = new File(getNewAbsolutePath(this.rootDir));
-                    System.out.println(newRootDir.getAbsolutePath());
                     if(!this.rootDir.renameTo(newRootDir)) badFiles.add(this.rootDir.getAbsolutePath());
                     else if(this.changeSubDir) badFiles.addAll(this.renameSubDir(newRootDir.getAbsolutePath()));
                 }
@@ -106,14 +105,10 @@ public class NameChanger {
                 File newFile = new File(getNewAbsolutePath(this.rootDir));
                 if(!this.rootDir.renameTo(newFile)) badFiles.add(this.rootDir.getAbsolutePath());
             }
-            System.out.println(badFiles.size());
-            for(int i=0;i<badFiles.size();i++){
-                System.out.println(badFiles.get(i));
-            }
             return badFiles;
         }
         else {
-            System.out.println("no fallos");
+            System.out.println("No hay fallos");
             return null;
         }
     }
@@ -127,7 +122,7 @@ public class NameChanger {
                     File newFile = new File(getNewAbsolutePath(fich));
                     if(!fich.renameTo(newFile)){
                         newFile = new File (getNewNameIfItExists(newFile.getAbsolutePath()));
-                        if(!fich.renameTo(newFile)) badFiles.add(this.getNewNameIfItExists(newFile.getAbsolutePath()));
+                        if(!fich.renameTo(newFile)) badFiles.add(fich.getAbsolutePath());
                     }
                     else if(this.changeSubDir) badFiles.addAll(this.renameSubDir(newFile.getAbsolutePath()));
                 }
@@ -137,7 +132,7 @@ public class NameChanger {
                 File newFile = new File(getNewAbsolutePath(fich));
                 if(!fich.renameTo(newFile)){
                     newFile = new File (getNewNameIfItExists(newFile.getAbsolutePath()));
-                    if(!fich.renameTo(newFile)) badFiles.add(this.getNewNameIfItExists(newFile.getAbsolutePath()));
+                    if(!fich.renameTo(newFile)) badFiles.add(fich.getAbsolutePath());
                 }
             }
         }
@@ -221,7 +216,6 @@ public class NameChanger {
         String baseName = FilenameUtils.getBaseName(sb);
         baseName = this.removePreviousSpaces(baseName, baseName.length());
         baseName = this.removePreviousSpacesOfVersion(baseName);
-        System.out.println(FilenameUtils.getFullPathNoEndSeparator(sb)+"\\"+baseName+'.'+FilenameUtils.getExtension(sb));
         return FilenameUtils.getFullPathNoEndSeparator(sb)+"\\"+baseName+'.'+FilenameUtils.getExtension(sb);
     }
     
@@ -247,5 +241,10 @@ public class NameChanger {
             posibleFile = new File(path+name+'.'+extension);
         }
         return posibleFile.getAbsolutePath();
+    }
+    
+    public String getFormatedPath(File f){
+        if(f.getParentFile()!=null) return getFormatedPath(f.getParentFile())+" \\ "+f.getName();
+        else return "";
     }
 }
