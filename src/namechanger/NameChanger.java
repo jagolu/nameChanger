@@ -90,42 +90,50 @@ public class NameChanger {
         else return true;
     }
     
-    public ArrayList<File> changeTheNames(){
+    public ArrayList<String> changeTheNames(){
         if(this.areTheParamsRight()){
-            ArrayList<File> badFiles = new ArrayList<File>();
+            ArrayList<String> badFiles = new ArrayList<String>();
             if(this.rootDir.isDirectory()){
                 if(this.changeRootDir){
                     File newRootDir = new File(getNewAbsolutePath(this.rootDir));
                     System.out.println(newRootDir.getAbsolutePath());
-                    if(!this.rootDir.renameTo(newRootDir)) badFiles.add(this.rootDir);
+                    if(!this.rootDir.renameTo(newRootDir)) badFiles.add(this.rootDir.getAbsolutePath());
                     else if(this.changeSubDir) badFiles.addAll(this.renameSubDir(newRootDir.getAbsolutePath()));
                 }
                 else if(this.changeSubDir && !this.changeRootDir) badFiles.addAll(this.renameSubDir(rootDir.getAbsolutePath()));
             }
             else if(this.changeFileName){
                 File newFile = new File(getNewAbsolutePath(this.rootDir));
-                if(!this.rootDir.renameTo(newFile)) badFiles.add(this.rootDir);
+                if(!this.rootDir.renameTo(newFile)) badFiles.add(this.rootDir.getAbsolutePath());
+            }
+            System.out.println(badFiles.size());
+            for(int i=0;i<badFiles.size();i++){
+                System.out.println(badFiles.get(i));
             }
             return badFiles;
         }
-        else return null;
+        else {
+            System.out.println("no fallos");
+            return null;
+        }
     }
     
-    private ArrayList<File> renameSubDir(String pathDir){ 
+    private ArrayList<String> renameSubDir(String pathDir){ 
         File dir = new File (pathDir);
-        ArrayList<File> badFiles = new ArrayList<> ();
+        ArrayList<String> badFiles = new ArrayList<> ();
         for (final File fich : dir.listFiles()) {
             if (fich.isDirectory()) {
                 if(this.changeDirsName){
                     File newFile = new File(getNewAbsolutePath(fich));
-                    if(!fich.renameTo(newFile)) badFiles.add(newFile);
+                    if(!fich.renameTo(newFile)) badFiles.add(newFile.getAbsolutePath());
                     else if(this.changeSubDir) badFiles.addAll(this.renameSubDir(newFile.getAbsolutePath()));
                 }
                 else if(this.changeSubDir && !this.changeDirsName) badFiles.addAll(renameSubDir(fich.getAbsolutePath()));
             } 
             else if(this.changeFileName){
                 File newFile = new File(getNewAbsolutePath(fich));
-                if(!fich.renameTo(newFile)) badFiles.add(newFile);
+                System.out.println("FileName-->"+newFile.getAbsolutePath());
+                if(!fich.renameTo(newFile)) badFiles.add(newFile.getAbsolutePath());
             }
         }
         return badFiles;
@@ -138,6 +146,7 @@ public class NameChanger {
         if(oldAbsolutePath.isFile() && this.deleteLastSpace){
             newAbsolutePath=this.deleteLastSpaces(newAbsolutePath);
         }
+        //newAbsolutePath = this.getNewNameIfItExists(newAbsolutePath);
         return newAbsolutePath;
     }
     
@@ -171,16 +180,15 @@ public class NameChanger {
     }
     
     private String deleteLastSpaces(String sb){
-        StringBuffer withoutLastSpace = new StringBuffer(sb);
-        String extension = FilenameUtils.getExtension(sb);
-        int index = sb.length() - extension.length() -2;
-        for(int i = index;i>=0;i--){
-            if(sb.charAt(i)==' ' || sb.charAt(i)=='_' || sb.charAt(i)=='-'){
-                withoutLastSpace.deleteCharAt(i);
+        StringBuffer baseName = new StringBuffer(FilenameUtils.getBaseName(sb));
+        for(int i=baseName.length()-1;i>=0;i--){
+            if(baseName.charAt(i)==' ' || baseName.charAt(i)=='_' || baseName.charAt(i)=='-'){
+                baseName.deleteCharAt(i);
+                i--;
             }
             else break;
         }
-        return withoutLastSpace.toString();
+        return FilenameUtils.getFullPathNoEndSeparator(sb)+"\\"+baseName.toString()+'.'+FilenameUtils.getExtension(sb);
     }
     
     private String getRightPathOnWindows(String path){
@@ -194,5 +202,14 @@ public class NameChanger {
         }
         sb.append("\\");
         return sb.toString();
+    }
+    
+    
+    private String getNewNameIfItExists(String absolutePath){
+        
+        
+        
+        
+        return null;
     }
 }

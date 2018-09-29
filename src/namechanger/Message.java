@@ -23,7 +23,7 @@ public class Message extends javax.swing.JDialog {
         this.nci = nci;
         this.jButton1.setVisible(false);
         this.jTextPane1.setText("Loading...");
-        ArrayList<File> badFiles = nc.changeTheNames();
+        ArrayList<String> badFiles = nc.changeTheNames();
         if(badFiles==null){
             this.jTextPane1.setText("Fail!\nThe params are not right");
             this.jButton1.setVisible(true);
@@ -36,9 +36,9 @@ public class Message extends javax.swing.JDialog {
         }
         else{
             String text = "There is an error in the next files: \n";
-            text+=badFiles.get(0).getAbsolutePath();
+            text+=badFiles.get(0);
             for(int i=1;i<badFiles.size();i++){
-                text=text+"\n"+badFiles.get(i).getAbsolutePath();
+                text=text+"\n"+badFiles.get(i);
             }
             this.jButton1.setVisible(true);
             this.jButton1.setBackground(Color.red);
