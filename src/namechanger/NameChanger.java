@@ -132,7 +132,6 @@ public class NameChanger {
             } 
             else if(this.changeFileName){
                 File newFile = new File(getNewAbsolutePath(fich));
-                System.out.println("FileName-->"+newFile.getAbsolutePath());
                 if(!fich.renameTo(newFile)) badFiles.add(newFile.getAbsolutePath());
             }
         }
@@ -146,7 +145,7 @@ public class NameChanger {
         if(oldAbsolutePath.isFile() && this.deleteLastSpace){
             newAbsolutePath=this.deleteLastSpaces(newAbsolutePath);
         }
-        //newAbsolutePath = this.getNewNameIfItExists(newAbsolutePath);
+        newAbsolutePath = this.getNewNameIfItExists(newAbsolutePath);
         return newAbsolutePath;
     }
     
@@ -206,10 +205,13 @@ public class NameChanger {
     
     
     private String getNewNameIfItExists(String absolutePath){
-        
-        
-        
-        
-        return null;
+        File posibleFile = new File (absolutePath);
+        for(int i=2;posibleFile.exists();i++){
+            String path = FilenameUtils.getFullPathNoEndSeparator(absolutePath)+"\\";
+            String name = FilenameUtils.getBaseName(absolutePath)+'('+i+')';
+            String extension = FilenameUtils.getExtension(absolutePath);
+            posibleFile = new File(path+name+extension);
+        }
+        return posibleFile.getAbsolutePath();
     }
 }
