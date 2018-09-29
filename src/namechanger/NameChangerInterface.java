@@ -231,11 +231,11 @@ public class NameChangerInterface extends javax.swing.JDialog {
 
     private void theFileComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_theFileComponentResized
         // TODO add your handling code here:
-        /*Dimension newDim = this.theFile.getSize();
+        Dimension newDim = this.theFile.getSize();
         if(newDim.getHeight() > this.dimensionDirLabel.getHeight()){
-            int xDiff = (int) (this.dimensionDirLabel.getHeight()- newDim.getHeight());
-            this.setSize(WIDTH+xDiff, HEIGHT);
-        }*/
+            int xDiff = (int) (newDim.getHeight()-this.dimensionDirLabel.getHeight());
+            this.setSize(400, 300+xDiff);
+        }
     }//GEN-LAST:event_theFileComponentResized
 
     public void restart(){

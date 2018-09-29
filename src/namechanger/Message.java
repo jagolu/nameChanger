@@ -6,7 +6,9 @@
 package namechanger;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -26,21 +28,31 @@ public class Message extends javax.swing.JDialog {
             this.jTextPane1.setText("Fail!\nThe params are not right");
             this.jButton1.setVisible(true);
             this.jButton1.setBackground(Color.red);
+            this.jTextPane1.setForeground(Color.red);
         }
         else if(badFiles.isEmpty()){
+            this.jTextPane1.setFont(new Font("Arial", 15, 52));
             this.jTextPane1.setText("Done!");
             this.jButton1.setVisible(true);
             this.jButton1.setBackground(new java.awt.Color(204, 255, 204));
         }
         else{
-            String text = "There is an error in the next files: \n";
+            String text = "<html>There is an error in the next files: </br>";
             text+=badFiles.get(0);
+            int max;
+            if(badFiles.get(0).length()>38) max = badFiles.get(0).length();
+            else max = 38;
             for(int i=1;i<badFiles.size();i++){
-                text=text+"\n"+badFiles.get(i);
+                String thisPart = badFiles.get(i);
+                text=text+" </br> "+thisPart;
+                if(thisPart.length()>max) max = thisPart.length();
             }
+            text+="</html>";
+            this.setSize((int)Math.ceil(243+((max-38)*6.5)), 81+((badFiles.size()-1)*28));
             this.jTextPane1.setText(text);
             this.jButton1.setVisible(true);
             this.jButton1.setBackground(Color.red);
+            this.jTextPane1.setForeground(Color.red);
         }
     }
 
@@ -53,15 +65,10 @@ public class Message extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
+        jTextPane1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jTextPane1.setEditable(false);
-        jTextPane1.setToolTipText("");
-        jScrollPane1.setViewportView(jTextPane1);
 
         jButton1.setText("Aceptar");
         jButton1.setActionCommand("ok");
@@ -71,25 +78,29 @@ public class Message extends javax.swing.JDialog {
             }
         });
 
+        jTextPane1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jTextPane1.setMaximumSize(new java.awt.Dimension(2, 2));
+        jTextPane1.setMinimumSize(new java.awt.Dimension(2, 2));
+        jTextPane1.setName(""); // NOI18N
+        jTextPane1.setPreferredSize(new java.awt.Dimension(2, 2));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(jTextPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -106,7 +117,6 @@ public class Message extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
