@@ -5,10 +5,10 @@ NameChanger, as its name suggests, changes the name of the directories and files
 
 
 Read more about NameChanger: 
-  - [Features](##Features)
-  - [Requirements](##Fequirements)
-  - [Installation](##Installation)
-  - [Download](##Download)
+  - [Features](#features)
+  - [Requirements](#fequirements)
+  - [Installation](#installation)
+  - [Download](#download)
 
 
 
