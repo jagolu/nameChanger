@@ -23,7 +23,7 @@ public class NameChangerInterface extends javax.swing.JDialog {
     /**
      * Creates new form nameChangerInterface
      */
-    public NameChangerInterface(java.awt.Frame parent, boolean modal) {
+    public NameChangerInterface(java.awt.Frame parent, boolean modal){
         super(parent, modal);
         nc = new NameChanger();
         initComponents();
