@@ -9,6 +9,7 @@ Read more about NameChanger:
   - [Requirements](#requirements)
   - [Installation](#installation)
   - [Download](#download)
+  - [Getting started](#getting started)
 
 
 
@@ -72,9 +73,18 @@ NameChanger doesn't need any installation, it's an exe file!
 
 ### Version 1.0
 
+##### Jar
+<a href="https://mega.nz/#!NBcQUIJJ!a17ZpxuqLdmI3XgECxI_iwxyUZGTXJ79BB_51ypUDD8">nameChanger.jar</a>
 ##### Windows
 <a href="https://mega.nz/#!0RV2nAwL!jxsl5DGKWmFNf8oSLOQFnjNj1UIdoSAUsnJ5XzxvxEc">NameChanger.exe</a>
 ##### Linux
 Developing ...
 
+
+
+
+
+
+
+## Getting started
 
