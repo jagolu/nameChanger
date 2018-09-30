@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package namechanger;
+package GUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
+import namechanger.NameChanger;
 
 /**
  *

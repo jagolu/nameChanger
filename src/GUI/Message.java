@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package namechanger;
+package GUI;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import namechanger.NameChanger;
 
 /**
  *
