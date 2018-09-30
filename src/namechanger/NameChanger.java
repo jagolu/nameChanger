@@ -73,7 +73,14 @@ public class NameChanger {
     public boolean getChangeRootDir(){ return this.changeRootDir; }
     
     public void setRootDir(File rd){ this.rootDir=rd; }
+    public void setRootDir(String rd){
+        File f = new File(rd);
+        this.rootDir = f;
+    }
     public File getRootDir(){ return this.rootDir; }
+    
+
+    public String getPathRootDir(){ return this.rootDir.getAbsolutePath(); }
     
     
     private boolean areTheParamsRight(){
@@ -82,6 +89,7 @@ public class NameChanger {
                 !this.deleteLastSpace) return false;//Any option of change name is true}
         else if(!this.changeDirsName && !this.changeFileName) return false;//It won't make any change
         else if(this.changeWithLowBar && this.changeWithScript) return false;//Cannot change by script & lowBar at the same time
+        else if(this.changeWithMayus && this.changeWithoutMayus) return false;//Cannot change with capital letters & non-Capital letters at the same time
         else if((this.changeWithLowBar || this.changeWithScript) && 
                 (this.changeWithMayus || this.changeWithoutMayus)) return false; //Can change spaces & delete them
         else if(this.rootDir==null) return false; //The dir doesnt exist
@@ -108,7 +116,6 @@ public class NameChanger {
             return badFiles;
         }
         else {
-            System.out.println("No hay fallos");
             return null;
         }
     }
