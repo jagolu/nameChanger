@@ -74,9 +74,9 @@ NameChanger doesn't need any installation, it's an exe file!
 ### Version 1.0
 
 ##### Jar
-<a href="https://mega.nz/#!0RV2nAwL!jxsl5DGKWmFNf8oSLOQFnjNj1UIdoSAUsnJ5XzxvxEc">nameChanger.jar</a>
+<a href="https://mega.nz/#!Fc0nlbZC!K9gct8x9Gh5o4E479fWvjOPYa8Ux70Hie4sC3XC4DLY">nameChanger.jar</a>
 ##### Windows
-<a href="https://mega.nz/#!Fc0nlbZC!K9gct8x9Gh5o4E479fWvjOPYa8Ux70Hie4sC3XC4DLY">NameChanger.exe</a>
+<a href="https://mega.nz/#!0RV2nAwL!jxsl5DGKWmFNf8oSLOQFnjNj1UIdoSAUsnJ5XzxvxEc">NameChanger.exe</a>
 ##### Linux
 Developing ...
 
@@ -135,13 +135,28 @@ public class JavaApplication1 {
        nc.setDeleteLastSpace(true); //For the option "Delete last spaces"
        nc.setChangeRootDir(true); //For the option "Change the root dir name"
        nc.setRootDir(new File("absolute_path_to_your_directory_or_file"); //The absolute path to the file or directory
-       //or nc.setRootDir("absolute_path_to_your_directory_or_file");
+       nc.setRootDir("absolute_path_to_your_directory_or_file"); //The absolute path to the file or directory
        
-       //You can also use the getters of that options.
+       nc.getChangeSubDir(); //The option "Change the sub dirs"     type: boolean
+       nc.getBeginWithMayus(); //The options "Begin with capital letters"     type: boolean
+       nc.getChangeWithLowBar(); //The option "Change spaces with low bar"     type: boolean
+       nc.getChangeWithScript(); //The option "Change spaces with script"     type: boolean
+       nc.getChangeWithMayus(); //The option "Delete space (Next letter on capital)"     type: boolean
+       nc.getChangeWithoutMayus(); //The option "Delete space"     type: boolean
+       nc.getChangeDirsName(); //The option "Change dirs name"     type: boolean
+       nc.getChangeFileName(); //The option "Change files name"     type: boolean
+       nc.getEraseAccentMarks(); //The option "Erase accent marks"     type: boolean
+       nc.getDeleteLastSpace(); //The option "Delete last spaces"     type: boolean
+       nc.getChangeRootDir(); //The option "Change the root dir name"     type: boolean
+       nc.getRootDir(); //The absolute path to the file or directory     type: java.io.File
+       nc.getPathRootDir(); //The absolute path to the file or directory     type: String
     }
 }
 ```
-The function changeTheNames() will change the names and will return an ArrayList with the absolute path of the file that NameChanger couldn't change. If it return a null value or empty ArrayList, NameChanger didn't have any problem.
+The function changeTheNames() will change the names and will return:
+  - An ArrayList with the absolute path of the files that NameChanger couldn't change. 
+  - Null if the boolean options weren't right.
+  - An empty ArrayList if it wasn't any problem.
 
 There is some "laws" on the booleans options (if them are not like below, the NameChanger won't change anything): 
   - One of these options must be true (changeWithLowBar, changeWithScript, changeWithMayus, changeWithoutMayus, beginWithMayus, eraseAccentMarks, deleteLastSpace).
