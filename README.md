@@ -9,7 +9,7 @@ Read more about NameChanger:
   - [Requirements](#requirements)
   - [Installation](#installation)
   - [Download](#download)
-  - [Getting started](#getting started)
+  - [Getting started](#getting-started)
 
 
 
