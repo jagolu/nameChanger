@@ -29,8 +29,8 @@ With NameChanger, you can change the name of files and directories (and the file
   - "<strong>Delete last spaces</strong>": If this is activated, will delete the last spaces of the files. Example: 
     <p><I>Example (2) .txt -> Example(2).txt</I></p>
   - "<strong>Change the root dir name</strong>": If this is activated and you have chosen a directory, will change the name of the dir you have chosen.
-<p></p>
-<p></p>
+<p> </p>
+<p> </p>
 Now, the big thing of NameChanger with what thing you can replace the spaces. There are 5 options, you only can choose one of them:
    - "<strong>Not to change spaces</strong>": This is the preselected option, this won't do nothing with the spaces. Example: 
    <p><I>new filename.txt -> new filename.txt</I></p>
