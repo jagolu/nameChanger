@@ -29,20 +29,19 @@ With NameChanger, you can change the name of files and directories (and the file
   - "<strong>Delete last spaces</strong>": If this is activated, will delete the last spaces of the files. Example: 
     <p><I>Example (2) .txt -> Example(2).txt</I></p>
   - "<strong>Change the root dir name</strong>": If this is activated and you have chosen a directory, will change the name of the dir you have chosen.
-  
-  
-  
+<p></p>
+<p></p>
 Now, the big thing of NameChanger with what thing you can replace the spaces. There are 5 options, you only can choose one of them:
    - "<strong>Not to change spaces</strong>": This is the preselected option, this won't do nothing with the spaces. Example: 
    <p><I>new filename.txt -> new filename.txt</I></p>
    <p>If the options <strong>Delete last spaces</strong> is activated with that one the result will be this: <I>new filename .txt -> new filename.txt</I>
-  - "<strong>Change spaces with low bar</strong>": If this options is selected, the spaces will be replaced with a low bar. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+   - "<strong>Change spaces with low bar</strong>": If this options is selected, the spaces will be replaced with a low bar. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
   <p><I>new filename.txt -> new_filename.txt</I></p>
-  - "<strong>Change spaces with script</strong>": If this options is selected, the spaces will be replaced with a script. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+   - "<strong>Change spaces with script</strong>": If this options is selected, the spaces will be replaced with a script. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
   <p><I>new filename.txt -> new-filename.txt</I></p>
-  - "<strong>Delete space</strong>": If this options is selected, the spaces will be deleted. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+   - "<strong>Delete space</strong>": If this options is selected, the spaces will be deleted. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
   <p><I>new filename.txt -> newfilename.txt</I></p>
-  - "<strong>Delete space (Next letter on capital)</strong>": If this options is selected, the spaces will be deleted and the letter of the next word will be on capital. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+   - "<strong>Delete space (Next letter on capital)</strong>": If this options is selected, the spaces will be deleted and the letter of the next word will be on capital. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
   <p><I>new filename.txt -> newFilename.txt</I></p>
   
   
