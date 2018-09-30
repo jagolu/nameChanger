@@ -141,7 +141,7 @@ public class JavaApplication1 {
     }
 }
 ```
-The function changeTheNames() will change the names and will return an ArrayList with the absolute path of the file that NameChanger couldn't change.
+The function changeTheNames() will change the names and will return an ArrayList with the absolute path of the file that NameChanger couldn't change. If it return a null value or empty ArrayList, NameChanger didn't have any problem.
 
 There is some "laws" on the booleans options (if them are not like below, the NameChanger won't change anything): 
   - One of these options must be true (changeWithLowBar, changeWithScript, changeWithMayus, changeWithoutMayus, beginWithMayus, eraseAccentMarks, deleteLastSpace).
