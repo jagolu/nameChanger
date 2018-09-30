@@ -35,18 +35,18 @@ Now, the big thing of NameChanger with what thing you can replace the spaces. Th
 
   - "<strong>Not to change spaces</strong>": This is the preselected option, this won't do nothing with the spaces. Example: 
     <p><I>new filename.txt -> new filename.txt</I></p>
-    <p>If the options <strong>Delete last spaces</strong> is activated with that one the result will be this: <I>new filename .txt -> new filename.txt</I>
+    <p>If the option <strong>Delete last spaces</strong> is activated with that one the result will be this: <I>new filename .txt -> new filename.txt</I>
   
-  - "<strong>Change spaces with low bar</strong>": If this options is selected, the spaces will be replaced with a low bar. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+  - "<strong>Change spaces with low bar</strong>": If this option is selected, the spaces will be replaced with a low bar. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
     <p><I>new filename.txt -> new_filename.txt</I></p>
   
-  - "<strong>Change spaces with script</strong>": If this options is selected, the spaces will be replaced with a script. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+  - "<strong>Change spaces with script</strong>": If this option is selected, the spaces will be replaced with a script. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
     <p><I>new filename.txt -> new-filename.txt</I></p>
   
-  - "<strong>Delete space</strong>": If this options is selected, the spaces will be deleted. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+  - "<strong>Delete space</strong>": If this option is selected, the spaces will be deleted. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
     <p><I>new filename.txt -> newfilename.txt</I></p>
   
-  - "<strong>Delete space (Next letter on capital)</strong>": If this options is selected, the spaces will be deleted and the letter of the next word will be on capital. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
+  - "<strong>Delete space (Next letter on capital)</strong>": If this option is selected, the spaces will be deleted and the letter of the next word will be on capital. (This option can be chosen with the option <strong>Delete last spaces</strong>). Example: 
     <p><I>new filename.txt -> newFilename.txt</I></p>
   
   
@@ -107,7 +107,7 @@ public class JavaApplication1 {
         //For the option "Change the sub dirs"
         boolean changeSubDir = true;  
         
-        //For the options "Begin with capital letters"
+        //For the option "Begin with capital letters"
         boolean beginWithMayus = true; 
         
         //For the option "Change spaces with low bar"
@@ -153,7 +153,7 @@ public class JavaApplication1 {
        //For the option "Change the sub dirs"
        nc.setChangeSubDir(true); 
        
-       //For the options "Begin with capital letters"
+       //For the option "Begin with capital letters"
        nc.setBeginWithMayus(true); 
        
        //For the option "Change spaces with low bar"
@@ -194,7 +194,7 @@ public class JavaApplication1 {
        //The option "Change the sub dirs"
        boolean changeSubDir = nc.getChangeSubDir(); 
        
-       //The options "Begin with capital letters"
+       //The option "Begin with capital letters"
        boolean beginWithMayus = nc.getBeginWithMayus(); 
        
        //The option "Change spaces with low bar"
