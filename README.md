@@ -74,9 +74,9 @@ NameChanger doesn't need any installation, it's an exe file!
 ### Version 1.0
 
 ##### Jar
-<a href="https://mega.nz/#!NBcQUIJJ!a17ZpxuqLdmI3XgECxI_iwxyUZGTXJ79BB_51ypUDD8">nameChanger.jar</a>
+<a href="https://mega.nz/#!0RV2nAwL!jxsl5DGKWmFNf8oSLOQFnjNj1UIdoSAUsnJ5XzxvxEc">nameChanger.jar</a>
 ##### Windows
-<a href="https://mega.nz/#!0RV2nAwL!jxsl5DGKWmFNf8oSLOQFnjNj1UIdoSAUsnJ5XzxvxEc">NameChanger.exe</a>
+<a href="https://mega.nz/#!Fc0nlbZC!K9gct8x9Gh5o4E479fWvjOPYa8Ux70Hie4sC3XC4DLY">NameChanger.exe</a>
 ##### Linux
 Developing ...
 
