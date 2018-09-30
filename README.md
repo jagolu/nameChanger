@@ -137,19 +137,19 @@ public class JavaApplication1 {
        nc.setRootDir(new File("absolute_path_to_your_directory_or_file"); //The absolute path to the file or directory
        nc.setRootDir("absolute_path_to_your_directory_or_file"); //The absolute path to the file or directory
        
-       nc.getChangeSubDir(); //The option "Change the sub dirs"     type: boolean
-       nc.getBeginWithMayus(); //The options "Begin with capital letters"     type: boolean
-       nc.getChangeWithLowBar(); //The option "Change spaces with low bar"     type: boolean
-       nc.getChangeWithScript(); //The option "Change spaces with script"     type: boolean
-       nc.getChangeWithMayus(); //The option "Delete space (Next letter on capital)"     type: boolean
-       nc.getChangeWithoutMayus(); //The option "Delete space"     type: boolean
-       nc.getChangeDirsName(); //The option "Change dirs name"     type: boolean
-       nc.getChangeFileName(); //The option "Change files name"     type: boolean
-       nc.getEraseAccentMarks(); //The option "Erase accent marks"     type: boolean
-       nc.getDeleteLastSpace(); //The option "Delete last spaces"     type: boolean
-       nc.getChangeRootDir(); //The option "Change the root dir name"     type: boolean
-       nc.getRootDir(); //The absolute path to the file or directory     type: java.io.File
-       nc.getPathRootDir(); //The absolute path to the file or directory     type: String
+       boolean changeSubDir = nc.getChangeSubDir(); //The option "Change the sub dirs"
+       boolean beginWithMayus = nc.getBeginWithMayus(); //The options "Begin with capital letters"
+       boolean changeWithLowBar = nc.getChangeWithLowBar(); //The option "Change spaces with low bar"
+       boolean changeWithScript = nc.getChangeWithScript(); //The option "Change spaces with script"
+       boolean changeWithMayus = nc.getChangeWithMayus(); //The option "Delete space (Next letter on capital)"
+       boolean changeWithoutMayus = nc.getChangeWithoutMayus(); //The option "Delete space"
+       boolean changeDirsName = nc.getChangeDirsName(); //The option "Change dirs name"
+       boolean changeDirsName = nc.getChangeFileName(); //The option "Change files name"
+       boolean changeFileName = nc.getEraseAccentMarks(); //The option "Erase accent marks"
+       boolean deleteLastSpace = nc.getDeleteLastSpace(); //The option "Delete last spaces"
+       boolean changeRootDir = nc.getChangeRootDir(); //The option "Change the root dir name"
+       java.io.File rootDir = nc.getRootDir(); //The absolute path to the file or directory
+       String absolutePath = nc.getPathRootDir(); //The absolute path to the file or directory
     }
 }
 ```
