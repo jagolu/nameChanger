@@ -100,56 +100,94 @@ import java.io.File;
 public class JavaApplication1 {
 
     public static void main(String[] args) {
-        boolean changeSubDir = true;  //For the option "Change the sub dirs"
-        boolean beginWithMayus = true; //For the options "Begin with capital letters"
-        boolean changeWithLowBar = true; //For the option "Change spaces with low bar"
-        boolean changeWithScript = false; //For the option "Change spaces with script"
-        boolean changeWithMayus = false; //For the option "Delete space (Next letter on capital)"
-        boolean changeWithoutMayus = false; //For the option "Delete space"
-        boolean changeDirsName = true; //For the option "Change dirs name"
-        boolean changeFileName = true; //For the option "Change files name"
-        boolean eraseAccentMarks = true; //For the option "Erase accent marks"
-        boolean deleteLastSpace = true; //For the option "Delete last spaces"
-        boolean changeRootDir = true; //For the option "Change the root dir name"
-        String rootDir = "path_to_my_file_or_directory"; //The absolute path to the file or directory
+        //For the option "Change the sub dirs"
+        boolean changeSubDir = true;  
+        //For the options "Begin with capital letters"
+        boolean beginWithMayus = true; 
+        //For the option "Change spaces with low bar"
+        boolean changeWithLowBar = true; 
+        //For the option "Change spaces with script"
+        boolean changeWithScript = false; 
+        //For the option "Delete space (Next letter on capital)"
+        boolean changeWithMayus = false; 
+        //For the option "Delete space"
+        boolean changeWithoutMayus = false; 
+        //For the option "Change dirs name"
+        boolean changeDirsName = true; 
+        //For the option "Change files name"
+        boolean changeFileName = true; 
+        //For the option "Erase accent marks"
+        boolean eraseAccentMarks = true; 
+        //For the option "Delete last spaces"
+        boolean deleteLastSpace = true; 
+        //For the option "Change the root dir name"
+        boolean changeRootDir = true; 
+        //The absolute path to the file or directory
+        String rootDir = "path_to_my_file_or_directory"; 
         
         ArrayList<String> badFiles = new ArrayList<String>();
         
         
-        NameChanger nc = new NameChanger(changeSubDir, beginWithMayus, changeWithLowBar, changeWithScript,
-            changeWithMayus, changeWithoutMayus, changeDirsName, changeFileName, eraseAccentMarks, deleteLastSpace, 
-            changeRootDir, rootDir));
+        NameChanger nc = new NameChanger(changeSubDir, beginWithMayus, changeWithLowBar, 
+            changeWithScript, changeWithMayus, changeWithoutMayus, changeDirsName, 
+            changeFileName, eraseAccentMarks, deleteLastSpace, changeRootDir, rootDir));
             
         
        badFiles =  nc.changeTheNames(); 
-/*-----------------------------------------------------------GETTERS---SETTERS--------------------------------------------------------*/
-       nc.setChangeSubDir(true); //For the option "Change the sub dirs"
-       nc.setBeginWithMayus(true); //For the options "Begin with capital letters"
-       nc.setChangeWithLowBar(true); //For the option "Change spaces with low bar"
-       nc.setChangeWithScript(false); //For the option "Change spaces with script"
-       nc.setChangeWithMayus(false); //For the option "Delete space (Next letter on capital)"
-       nc.setChangeWithoutMayus(false);  //For the option "Delete space"
-       nc.setChangeDirsName(true); //For the option "Change dirs name"
-       nc.setChangeFileName(true); //For the option "Change files name"
-       nc.setEraseAccentMarks(true); //For the option "Erase accent marks"
-       nc.setDeleteLastSpace(true); //For the option "Delete last spaces"
-       nc.setChangeRootDir(true); //For the option "Change the root dir name"
-       nc.setRootDir(new File("absolute_path_to_your_directory_or_file"); //The absolute path to the file or directory
-       nc.setRootDir("absolute_path_to_your_directory_or_file"); //The absolute path to the file or directory
+/*---------------------------------GETTERS---SETTERS-----------------------------------------*/
+       //For the option "Change the sub dirs"
+       nc.setChangeSubDir(true); 
+       //For the options "Begin with capital letters"
+       nc.setBeginWithMayus(true); 
+       //For the option "Change spaces with low bar"
+       nc.setChangeWithLowBar(true); 
+       //For the option "Change spaces with script"
+       nc.setChangeWithScript(false); 
+       //For the option "Delete space (Next letter on capital)"
+       nc.setChangeWithMayus(false); 
+       //For the option "Delete space"
+       nc.setChangeWithoutMayus(false);  
+       //For the option "Change dirs name"
+       nc.setChangeDirsName(true); 
+       //For the option "Change files name"
+       nc.setChangeFileName(true); 
+       //For the option "Erase accent marks"
+       nc.setEraseAccentMarks(true); 
+       //For the option "Delete last spaces"
+       nc.setDeleteLastSpace(true); 
+       //For the option "Change the root dir name"
+       nc.setChangeRootDir(true); 
+       //The absolute path to the file or directory
+       nc.setRootDir(new File("absolute_path_to_your_directory_or_file"); 
+       //The absolute path to the file or directory
+       nc.setRootDir("absolute_path_to_your_directory_or_file"); 
        
-       boolean changeSubDir = nc.getChangeSubDir(); //The option "Change the sub dirs"
-       boolean beginWithMayus = nc.getBeginWithMayus(); //The options "Begin with capital letters"
-       boolean changeWithLowBar = nc.getChangeWithLowBar(); //The option "Change spaces with low bar"
-       boolean changeWithScript = nc.getChangeWithScript(); //The option "Change spaces with script"
-       boolean changeWithMayus = nc.getChangeWithMayus(); //The option "Delete space (Next letter on capital)"
-       boolean changeWithoutMayus = nc.getChangeWithoutMayus(); //The option "Delete space"
-       boolean changeDirsName = nc.getChangeDirsName(); //The option "Change dirs name"
-       boolean changeDirsName = nc.getChangeFileName(); //The option "Change files name"
-       boolean changeFileName = nc.getEraseAccentMarks(); //The option "Erase accent marks"
-       boolean deleteLastSpace = nc.getDeleteLastSpace(); //The option "Delete last spaces"
-       boolean changeRootDir = nc.getChangeRootDir(); //The option "Change the root dir name"
-       java.io.File rootDir = nc.getRootDir(); //The absolute path to the file or directory
-       String absolutePath = nc.getPathRootDir(); //The absolute path to the file or directory
+       //The option "Change the sub dirs"
+       boolean changeSubDir = nc.getChangeSubDir(); 
+       //The options "Begin with capital letters"
+       boolean beginWithMayus = nc.getBeginWithMayus(); 
+       //The option "Change spaces with low bar"
+       boolean changeWithLowBar = nc.getChangeWithLowBar(); 
+       //The option "Change spaces with script"
+       boolean changeWithScript = nc.getChangeWithScript(); 
+       //The option "Delete space (Next letter on capital)"
+       boolean changeWithMayus = nc.getChangeWithMayus(); 
+       //The option "Delete space"
+       boolean changeWithoutMayus = nc.getChangeWithoutMayus(); 
+       //The option "Change dirs name"
+       boolean changeDirsName = nc.getChangeDirsName();
+       //The option "Change files name"
+       boolean changeDirsName = nc.getChangeFileName(); 
+       //The option "Erase accent marks"
+       boolean changeFileName = nc.getEraseAccentMarks(); 
+       //The option "Delete last spaces"
+       boolean deleteLastSpace = nc.getDeleteLastSpace(); 
+       //The option "Change the root dir name"
+       boolean changeRootDir = nc.getChangeRootDir(); 
+       //The absolute path to the file or directory
+       java.io.File rootDir = nc.getRootDir(); 
+       //The absolute path to the file or directory
+       String absolutePath = nc.getPathRootDir(); 
     }
 }
 ```
